@@ -27,5 +27,6 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@nuxt/image',
     'nuxt-lucide-icons',
+    'nuxt-marquee',
   ],
 })
