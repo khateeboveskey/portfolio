@@ -1,12 +1,14 @@
 <template>
   <div>
-    <AppHeader />
+    <LayoutAppHeader />
     <slot />
-    <AppFooter />
+    <LayoutAppFooter />
   </div>
 </template>
 
 <script setup lang="ts">
+import { EXTERNAL_RESOURCES } from '~/constants';
+
 useHead({
   meta: [
     { name: 'author', content: 'Abdulrahman Al-Khateeb' },
@@ -15,7 +17,7 @@ useHead({
   ],
   titleTemplate: '%s | Khateeb',
   link: [
-    { rel: 'stylesheet', type: 'text/css', href: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css' },
+    EXTERNAL_RESOURCES.DEVICONS
   ]
 });
 </script>

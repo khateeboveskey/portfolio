@@ -20,13 +20,44 @@
       <form action="https://formspree.io/f/xovevjzq" method="POST" class="flex flex-col gap-4" @submit="validateForm">
         <label class="flex flex-col text-white">
           Your email:
-          <input type="email" name="email" v-model="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" class="mt-2 p-2 bg-accent-background/10 border border-accent-background/20 text-white focus:outline-none focus:border-accent-background w-full">
-          <span class="text-accent text-sm mt-1" v-if="!isEmailValid && email">Please enter a valid email address</span>
+          <input 
+            type="email" 
+            name="email" 
+            v-model="email" 
+            required 
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
+            class="mt-2 p-2 bg-accent-background/10 border border-accent-background/20 text-white focus:outline-none focus:border-accent-background w-full"
+            aria-describedby="email-error"
+          >
+          <span 
+            id="email-error"
+            class="text-accent text-sm mt-1" 
+            v-if="!isEmailValid && email"
+            role="alert"
+          >
+            Please enter a valid email address
+          </span>
         </label>
         <label class="flex flex-col text-white">
           Your message:
-          <textarea name="message" v-model="message" required minlength="10" @input="checkDirection" :dir="messageDirection" :class="['mt-2 p-2 bg-accent-background/10 border border-accent-background/20 text-white focus:outline-none focus:border-accent-background h-32 w-full', { 'font-ibm-arabic': messageDirection === 'rtl' }]"></textarea>
-          <span class="text-accent text-sm mt-1" v-if="!isMessageValid && message">Message must be at least 10 characters long</span>
+          <textarea 
+            name="message" 
+            v-model="message" 
+            required 
+            minlength="10" 
+            @input="updateMessageDirection" 
+            :dir="messageDirection" 
+            :class="['mt-2 p-2 bg-accent-background/10 border border-accent-background/20 text-white focus:outline-none focus:border-accent-background h-32 w-full', { 'font-ibm-arabic': messageDirection === 'rtl' }]"
+            aria-describedby="message-error"
+          ></textarea>
+          <span 
+            id="message-error"
+            class="text-accent text-sm mt-1" 
+            v-if="!isMessageValid && message"
+            role="alert"
+          >
+            Message must be at least 10 characters long
+          </span>
         </label>
         <button type="submit" :disabled="!isFormValid" :class="[
           'mt-4 py-2 px-6 transition-colors w-full md:w-auto',
@@ -41,36 +72,27 @@
 
 <script setup lang="ts">
 import { accounts } from 'assets/mydata.json';
-import { ref, computed } from 'vue';
+import { useContactForm } from '~/composables/useContactForm';
 
-const messageDirection = ref('ltr');
-const email = ref('');
-const message = ref('');
+const {
+  email,
+  message,
+  messageDirection,
+  isEmailValid,
+  isMessageValid,
+  isFormValid,
+  updateMessageDirection
+} = useContactForm();
 
-const isEmailValid = computed(() => {
-  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  return emailRegex.test(email.value);
-});
-
-const isMessageValid = computed(() => {
-  return message.value.length >= 10;
-});
-
-const isFormValid = computed(() => {
-  return isEmailValid.value && isMessageValid.value && email.value && message.value;
-});
-
-const checkDirection = (event: Event) => {
-  const text = (event.target as HTMLTextAreaElement).value;
-  const firstChar = text.trim().charAt(0);
-  messageDirection.value = /[\u0600-\u06FF]/.test(firstChar) ? 'rtl' : 'ltr';
+/**
+ * Form submission handler with validation
+ */
+const validateForm = (event: Event) => {
+  if (!isFormValid.value) {
+    event.preventDefault();
+    return false;
+  }
+  return true;
 };
 </script>
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&display=swap');
-
-.font-ibm-arabic {
-  font-family: 'IBM Plex Sans Arabic', sans-serif;
-}
-</style>
