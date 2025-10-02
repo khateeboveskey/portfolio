@@ -1,12 +1,12 @@
 <template>
-  <a :href="props.project?.githubRepo ?? '/'" class="group flex flex-col justify-between border-2 border-accent-foreground divide-accent-foreground divide-y-2">
+  <a :href="props.project?.githubRepo ?? '/'" class="group flex flex-col justify-between border-2 border-accent-foreground dark:border-gray-600 divide-accent-foreground dark:divide-gray-600 divide-y-2">
     <div class="relative">
       <NuxtImg quality="50" format="webp" :src="`/imgs/projects-thumbnails/${props.project?.image}`" :alt="props.project?.name" class="w-full h-48 object-cover object-top" />
       <IconSquareArrowOutUpRight class="absolute top-2 right-2 w-6 h-6 invert mix-blend-difference" />
     </div>
-    <div class="p-3 sm:p-4 md:p-5 flex flex-col gap-4 sm:gap-6 md:gap-8 group-hover:bg-accent-foreground group-hover:text-accent-background">
+    <div class="p-3 sm:p-4 md:p-5 flex flex-col gap-4 sm:gap-6 md:gap-8 group-hover:bg-accent-foreground dark:group-hover:bg-gray-700 group-hover:text-accent-background dark:group-hover:text-gray-100">
       <div class="flex items-start justify-between">
-        <h3 class="line-clamp-2 text-lg font-bold sm:text-xl md:text-2xl">
+        <h3 class="line-clamp-2 text-lg font-bold sm:text-xl md:text-2xl dark:text-gray-100">
           {{ props.project?.name }}
         </h3>
         <span class="text-accent ml-2 text-sm whitespace-nowrap sm:text-base">
@@ -18,7 +18,7 @@
           {{ props.project?.type }}
         </div>
         <div class="flex flex-wrap gap-2">
-          <i v-for="(skill, index) in props.project?.stack" :key="index" :class="getDevIcon(skill)" class="text-accent-foreground group-hover:text-accent-background text-xl sm:text-2xl"></i>
+          <i v-for="(skill, index) in props.project?.stack" :key="index" :class="getDevIcon(skill)" class="text-accent-foreground dark:text-gray-100 group-hover:text-accent-background dark:group-hover:text-gray-100 text-xl sm:text-2xl"></i>
         </div>
       </div>
     </div>
