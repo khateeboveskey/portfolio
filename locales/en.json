@@ -1,0 +1,75 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "experience": "Experience",
+    "skills": "Skills",
+    "projects": "Projects",
+    "articles": "Articles",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "name": "Abdulrahman Al-Khateeb",
+    "title": "Full-Stack Developer & Technical Trainer",
+    "description": "Passionate Full-Stack Developer and Technical Trainer with 3+ years of experience in web development. Seeking a challenging role where I can build scalable applications, enhance user experiences, and contribute to innovative projects while leveraging my expertise in software development.",
+    "cta": {
+      "viewWork": "View My Work",
+      "contact": "Get In Touch"
+    },
+    "availability": "Available for Work"
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "Get to know me better",
+    "tagline": "Crafting digital experiences with passion and precision."
+  },
+  "experience": {
+    "title": "Experience",
+    "subtitle": "My Professional Journey",
+    "professional": "Professional Experience",
+    "personal": "Personal Projects"
+  },
+  "skills": {
+    "title": "Skills",
+    "subtitle": "What I'm Good At",
+    "soft": "Soft Skills",
+    "hard": "Technical Skills"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Things I've Built",
+    "viewGithub": "View on GitHub",
+    "viewProject": "View Project"
+  },
+  "articles": {
+    "title": "Articles",
+    "subtitle": "What I've Written",
+    "readMore": "Read More",
+    "showOn": "Show on"
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "Let's Work Together",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send Message",
+    "info": {
+      "phone": "Phone",
+      "email": "Email",
+      "location": "Location"
+    }
+  },
+  "footer": {
+    "about": "About Me",
+    "connect": "Connect With Me",
+    "copyright": "All rights reserved.",
+    "tagline": "Crafting digital experiences with passion and precision."
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "backToHome": "Back to Home"
+  }
+}
