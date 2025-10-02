@@ -11,26 +11,64 @@
 		</button>
 
 		<!-- Navigation Menu -->
-		<nav :class="{ hidden: !isMenuOpen }" class="bg-accent-background fixed top-16 left-0 z-10 w-full p-4 pt-0 md:relative md:top-0 md:flex md:w-auto md:bg-transparent md:p-0">
-			<ul class="flex flex-col gap-4 text-lg md:flex-row md:gap-10">
+		<nav :class="{ hidden: !isMenuOpen }" class="bg-accent-background dark:bg-gray-900 fixed top-16 left-0 z-10 w-full p-4 pt-0 md:relative md:top-0 md:flex md:w-auto md:bg-transparent md:p-0">
+			<ul class="flex flex-col gap-4 text-lg md:flex-row md:gap-10 md:items-center">
 				<li>
-					<NavLink to="/">Home</NavLink>
+					<NavLink to="/">{{ $t('navigation.home') }}</NavLink>
 				</li>
 				<li>
-					<NavLink to="#about">About</NavLink>
+					<NavLink to="#about">{{ $t('navigation.about') }}</NavLink>
 				</li>
 				<li>
-					<NavLink to="#projects">Projects</NavLink>
+					<NavLink to="#projects">{{ $t('navigation.projects') }}</NavLink>
 				</li>
 				<li>
-					<NavLink to="#contact">Contact</NavLink>
+					<NavLink to="#contact">{{ $t('navigation.contact') }}</NavLink>
+				</li>
+				<!-- Theme Toggle -->
+				<li>
+					<UButton 
+						:icon="colorMode.value === 'dark' ? 'i-heroicons-moon-20-solid' : 'i-heroicons-sun-20-solid'"
+						color="gray"
+						variant="ghost"
+						aria-label="Theme toggle"
+						@click="toggleTheme"
+					/>
+				</li>
+				<!-- Language Toggle -->
+				<li>
+					<UButton 
+						:label="locale === 'en' ? 'ع' : 'EN'"
+						color="gray"
+						variant="ghost"
+						aria-label="Language toggle"
+						@click="toggleLanguage"
+					/>
 				</li>
 			</ul>
 		</nav>
 
 		<!-- CTA Button -->
 		<span class="hidden md:block">
-			<ul class="flex gap-3 text-lg">
+			<ul class="flex gap-3 text-lg items-center">
+				<li>
+					<UButton 
+						:icon="colorMode.value === 'dark' ? 'i-heroicons-moon-20-solid' : 'i-heroicons-sun-20-solid'"
+						color="gray"
+						variant="ghost"
+						aria-label="Theme toggle"
+						@click="toggleTheme"
+					/>
+				</li>
+				<li>
+					<UButton 
+						:label="locale === 'en' ? 'ع' : 'EN'"
+						color="gray"
+						variant="ghost"
+						aria-label="Language toggle"
+						@click="toggleLanguage"
+					/>
+				</li>
 				<li>
 					<CTAButton />
 				</li>
@@ -41,8 +79,18 @@
 
 <script setup lang="ts">
 const isMenuOpen = ref(false);
+const colorMode = useColorMode();
+const { locale, setLocale } = useI18n();
 
 const toggleMenu = () => {
 	isMenuOpen.value = !isMenuOpen.value;
+};
+
+const toggleTheme = () => {
+	colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark';
+};
+
+const toggleLanguage = () => {
+	setLocale(locale.value === 'en' ? 'ar' : 'en');
 };
 </script>
