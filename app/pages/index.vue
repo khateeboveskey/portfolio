@@ -1,14 +1,14 @@
 <template>
-  <HeroSection />
-  <TitlesBar />
-  <AboutSection />
-  <ProfessionalExpSection />
-  <SkillsSection />
-  <ProjectsSection />
-  <SocialProofSection />
-  <ArticlesSection />
-  <ContactSection />
-  <ResumeSection />
+  <HomeSectionsHero />
+  <HomeSectionsTitles />
+  <HomeSectionsAbout />
+  <HomeSectionsExperience />
+  <HomeSectionsSkills />
+  <HomeSectionsProjects />
+  <HomeSectionsSocialProof />
+  <HomeSectionsArticles />
+  <HomeSectionsContact />
+  <HomeSectionsResume />
 </template>
 
 <script setup lang="ts">

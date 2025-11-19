@@ -4,7 +4,7 @@
 			<div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
 				<!-- Brand Section -->
 				<div class="flex flex-col justify-between space-y-4">
-					<MyLogo with-name />
+					<AppLogo with-name />
 					<p class="text-sm text-neutral-300">
 						Crafting digital experiences with passion and precision.
 					</p>

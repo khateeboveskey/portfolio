@@ -1,6 +1,6 @@
 <template>
 	<section class="px-4 md:px-8 lg:px-16 xl:px-32">
-		<SectionHeader subtitle="What I've Written">Articles</SectionHeader>
+		<SharedSectionHeader subtitle="What I've Written">Articles</SharedSectionHeader>
 		<ul class="space-y-4 md:space-y-6 lg:space-y-10">
 			<li v-for="(article, index) in experience.personal.creativeWriting" :key="index">
 				<a :href="article.url" target="_blank" class="border-accent-foreground hover:bg-accent-foreground hover:text-accent-background group flex min-h-[12rem] flex-col items-start justify-between border-2 p-4 md:h-48 md:flex-row md:items-center md:gap-10 md:px-6 md:py-6 lg:px-10 lg:py-9">

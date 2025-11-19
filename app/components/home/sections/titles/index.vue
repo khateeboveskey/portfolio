@@ -9,7 +9,7 @@
 				style="transition-duration: 0ms">
 				<template v-for="(title, index) in duplicatedTitles" :key="index">
 					{{ title }}
-					<MyLogo class="mx-4 inline-block h-4 -translate-y-0.5 sm:mx-6 sm:h-5 md:mx-10 md:h-6" />
+					<AppLogo class="mx-4 inline-block h-4 -translate-y-0.5 sm:mx-6 sm:h-5 md:mx-10 md:h-6" />
 				</template>
 			</div>
 		</div>
