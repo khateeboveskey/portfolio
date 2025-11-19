@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap');
+
+@import 'tailwindcss';
+
+@theme {
+	--font-sans: 'Funnel Display', sans-serif;
+	--color-accent: #e64d33;
+	--color-accent-foreground: #171513;
+	--color-accent-background: #f3f1ef;
+	--color-accent-background-muted: #e6e3dd;
+}
+
+*:not(.text-accent) {
+	@apply selection:bg-accent;
+}
+
+/* #vue-inspector-container,
+#__vue-devtools-container__ {
+	display: none !important;
+} */
+
+html {
+	scroll-behavior: smooth;
+	scroll-padding-top: 80px;
+}
