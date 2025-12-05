@@ -1,32 +1,27 @@
-import tailwindcss from "@tailwindcss/vite";
-
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2024-11-01',
+  compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
-  css: ['assets/css/main.css'],
-  content: {
-    build: {
-      markdown: {
-        highlight: {
-          theme: 'one-dark-pro',
-        }
-      }
-    },
+  css: ["@/assets/css/main.css"],
+  lucide: {
+    namePrefix: "Icon",
   },
-  vite: {
-    plugins: [
-      tailwindcss(),
+  fonts: {
+    families: [
+      {
+        name: "Funnel Display Variable",
+        src: "/fonts/FunnelDisplay-VariableFont_wght.woff2",
+      },
     ],
   },
-  lucide: {
-    namePrefix: 'Icon'
-  },
   modules: [
-    'nuxt-svgo',
-    '@nuxt/content',
-    '@nuxt/image',
-    'nuxt-lucide-icons',
-    'nuxt-marquee',
+    "@nuxt/eslint",
+    "@nuxt/fonts",
+    "@nuxt/hints",
+    "@nuxt/image",
+    "@nuxt/ui",
+    "nuxt-lucide-icons",
+    "nuxt-marquee",
+    "nuxt-svgo",
   ],
-})
+});
