@@ -1,14 +1,16 @@
 <template>
-  <HeroSection />
-  <TitlesBar />
-  <AboutSection />
-  <ProfessionalExpSection />
-  <SkillsSection />
-  <ProjectsSection />
-  <SocialProofSection />
-  <ArticlesSection />
-  <ContactSection />
-  <ResumeSection />
+  <div>
+    <HomeHeroSection />
+    <HomeTitlesBar />
+    <HomeAboutSection />
+    <HomeProfessionalExpSection />
+    <HomeSkillsSection />
+    <HomeProjectsSection />
+    <HomeSocialProofSection />
+    <HomeArticlesSection />
+    <HomeContactSection />
+    <HomeResumeSection />
+  </div>
 </template>
 
 <script setup lang="ts">
