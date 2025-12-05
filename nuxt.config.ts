@@ -6,8 +6,17 @@ export default defineNuxtConfig({
   lucide: {
     namePrefix: "Icon",
   },
+  fonts: {
+    families: [
+      {
+        name: "Funnel Display Variable",
+        src: "/fonts/FunnelDisplay-VariableFont_wght.woff2",
+      },
+    ],
+  },
   modules: [
     "@nuxt/eslint",
+    "@nuxt/fonts",
     "@nuxt/hints",
     "@nuxt/image",
     "@nuxt/ui",

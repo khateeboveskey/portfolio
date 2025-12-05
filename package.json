@@ -10,16 +10,17 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@number-flow/vue": "^0.4.8",
     "@nuxt/eslint": "1.10.0",
+    "@nuxt/fonts": "0.12.1",
     "@nuxt/hints": "1.0.0-alpha.1",
     "@nuxt/image": "2.0.0",
     "@nuxt/ui": "4.2.0",
     "eslint": "^9.39.1",
     "nuxt": "^4.2.1",
-    "typescript": "^5.9.3",
-    "@number-flow/vue": "^0.4.8",
     "nuxt-lucide-icons": "^2.0.0",
     "nuxt-marquee": "^1.0.4",
-    "nuxt-svgo": "^4.2.6"
+    "nuxt-svgo": "^4.2.6",
+    "typescript": "^5.9.3"
   }
 }

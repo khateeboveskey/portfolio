@@ -1,17 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap');
-
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @theme {
-	--font-sans: 'Funnel Display', sans-serif;
-	--color-accent: #e64d33;
-	--color-accent-foreground: #171513;
-	--color-accent-background: #f3f1ef;
-	--color-accent-background-muted: #e6e3dd;
+  --font-display: "Funnel Display Variable", sans-serif;
+  --color-accent: #e64d33;
+  --color-accent-foreground: #171513;
+  --color-accent-background: #f3f1ef;
+  --color-accent-background-muted: #e6e3dd;
 }
 
 *:not(.text-accent) {
-	@apply selection:bg-accent;
+  @apply selection:bg-accent;
 }
 
 /* #vue-inspector-container,
@@ -20,6 +18,7 @@
 } */
 
 html {
-	scroll-behavior: smooth;
-	scroll-padding-top: 80px;
+  @apply font-display;
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
