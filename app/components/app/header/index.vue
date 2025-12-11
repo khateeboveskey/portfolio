@@ -33,7 +33,7 @@
     <!-- Navigation Menu -->
     <nav
       :class="{ hidden: !isMenuOpen }"
-      class="bg-accent-background fixed top-16 left-0 z-10 w-full p-4 pt-0 md:relative md:top-0 md:flex md:w-auto md:bg-transparent md:p-0"
+      class="bg-default fixed top-16 left-0 z-10 w-full p-4 pt-0 md:relative md:top-0 md:flex md:w-auto md:bg-transparent md:p-0"
     >
       <ul class="flex flex-col gap-4 text-lg md:flex-row md:gap-10">
         <li>

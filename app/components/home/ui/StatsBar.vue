@@ -1,12 +1,12 @@
 <template>
   <div
-    class="border-accent-foreground mt-10 grid w-full grid-cols-3 grid-rows-1 justify-between border-2 md:mt-16"
+    class="mt-10 grid w-full grid-cols-3 grid-rows-1 justify-between border-2 md:mt-16"
   >
     <div
       v-for="(si, index) in snapInfoGroup"
       :key="index"
       ref="snapRefs"
-      class="even:bg-accent-foreground even:text-accent-background grid place-items-center p-3 sm:p-4 md:p-5"
+      class="even:bg-inverted even:text-inverted grid place-items-center p-3 sm:p-4 md:p-5"
     >
       <ClientOnly>
         <NumberFlow

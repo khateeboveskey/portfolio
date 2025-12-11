@@ -2,7 +2,7 @@
   <section
     class="flex flex-col items-center justify-between px-4 pt-4 sm:pt-12 md:flex-row md:px-32 md:pt-8"
   >
-    <div class="mb-8 text-center md:mb-12 md:w-1/3 md:text-left">
+    <div class="mb-8 text-default text-center md:mb-12 md:w-1/3 md:text-left">
       <h1
         class="m-4 mb-4 text-3xl font-bold sm:m-0 sm:mb-6 sm:text-4xl md:text-4xl lg:text-5xl"
       >
@@ -19,7 +19,7 @@
     </div>
     <div class="relative w-full md:me-14 md:w-1/2">
       <AppLogo
-        class="stroke-accent absolute inset-0 z-0 h-full w-full overflow-visible fill-transparent stroke-20"
+        class="text-primary stroke-current absolute inset-0 z-0 h-full w-full overflow-visible fill-transparent stroke-20"
       />
       <NuxtImg
         quality="50"

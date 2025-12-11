@@ -6,7 +6,7 @@
     <div class="flex flex-col justify-start gap-10 md:flex-row md:gap-20">
       <div class="flex flex-col gap-8 flex-1/2">
         <span
-          class="text-accent-foreground text-center text-xl font-semibold text-nowrap md:text-left md:text-3xl"
+          class="text-default text-center text-xl font-semibold text-nowrap md:text-left md:text-3xl"
         >
           Abdulrahman
           <AppLogo
@@ -15,7 +15,7 @@
           Al-Khateeb
         </span>
         <h2
-          class="text-accent-foreground text-left text-4xl font-bold md:text-left md:text-5xl"
+          class="text-default text-left text-4xl font-bold md:text-left md:text-5xl"
         >
           Crafting digital experiences with passion and precision.
         </h2>

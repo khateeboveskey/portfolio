@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-accent-foreground text-accent-background py-12 pb-20">
+  <footer class="bg-inverted text-inverted py-12 pb-20">
     <div class="container mx-auto px-4 md:px-8">
       <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
         <!-- Brand Section -->
@@ -31,11 +31,9 @@
                 :aria-label="`Follow on ${key}`"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="border-accent-background/20 hover:border-accent-background hover:bg-accent-background/10 flex h-10 w-10 items-center justify-center rounded-full border transition-all"
+                class="border-white/20 hover:border-white hover:bg-white/10 flex h-10 w-10 items-center justify-center rounded-full border transition-all"
               >
-                <i
-                  :class="`fa-brands fa-${key} text-accent-background text-lg`"
-                />
+                <i :class="`fa-brands fa-${key} text-white text-lg`" />
               </a>
             </li>
           </ul>

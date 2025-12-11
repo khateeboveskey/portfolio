@@ -1,15 +1,68 @@
 @import "tailwindcss";
+@import "@nuxt/ui";
 
 @theme {
   --font-display: "Funnel Display Variable", sans-serif;
-  --color-accent: #e64d33;
-  --color-accent-foreground: #171513;
-  --color-accent-background: #f3f1ef;
-  --color-accent-background-muted: #e6e3dd;
 }
 
-*:not(.text-accent) {
-  @apply selection:bg-accent;
+@theme static {
+  --color-brand-50: #fdedec;
+  --color-brand-100: #fbdfdd;
+  --color-brand-200: #f8beba;
+  --color-brand-300: #f59b94;
+  --color-brand-400: #f37567;
+  --color-brand-500: #e64d33; /* Primary Brand Color */
+  --color-brand-600: #ba3c27;
+  --color-brand-700: #8d2c1b;
+  --color-brand-800: #631c10;
+  --color-brand-900: #3c0d06;
+  --color-brand-950: #260603;
+
+  --color-foreground-50: #e9e5e0;
+  --color-foreground-100: #d2c7bd;
+  --color-foreground-200: #a0978e;
+  --color-foreground-300: #6e6760;
+  --color-foreground-400: #413d39;
+  --color-foreground-500: #171513; /* Primary Foreground Color */
+  --color-foreground-600: #151311;
+  --color-foreground-700: #0f0e0c;
+  --color-foreground-800: #0c0b09;
+  --color-foreground-900: #040403;
+  --color-foreground-950: #040403;
+
+  --color-background-50: #ffffff;
+  --color-background-100: #fcfcfc;
+  --color-background-200: #faf9f8;
+  --color-background-300: #f7f6f5;
+  --color-background-400: #f5f3f2;
+  --color-background-500: #f3f1ef; /* Primary Background Color */
+  --color-background-600: #c4baaf;
+  --color-background-700: #8f8880;
+  --color-background-800: #5e5953;
+  --color-background-900: #312e2b;
+  --color-background-950: #1d1b19;
+}
+
+:root {
+  /* Primary */
+  --ui-primary: var(--color-brand-500);
+
+  /* Text */
+  --ui-text: var(--color-foreground-500);
+  --ui-text-inverted: var(--color-background-500);
+
+  /* Background */
+  --ui-bg: var(--color-background-500);
+  --ui-bg-inverted: var(--color-foreground-500);
+
+  --ui-border: var(--color-foreground-500);
+
+  /* Radius */
+  --ui-radius: 0rem;
+}
+
+* {
+  @apply selection:bg-primary selection:text-default;
 }
 
 /* #vue-inspector-container,
