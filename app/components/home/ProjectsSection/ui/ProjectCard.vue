@@ -11,7 +11,8 @@
         :alt="props.project?.name"
         class="w-full h-48 object-cover object-top"
       />
-      <IconSquareArrowOutUpRight
+      <UIcon
+        name="lucide:square-arrow-out-up-right"
         class="absolute top-2 right-2 w-6 h-6 invert mix-blend-difference"
       />
     </div>
@@ -46,7 +47,7 @@
 </template>
 
 <script setup lang="ts">
-import { skills } from "@/assets/mydata.json";
+import { skills } from '@/assets/mydata.json';
 
 const props = defineProps({
   project: {

@@ -17,10 +17,10 @@
     "@nuxt/image": "2.0.0",
     "@nuxt/ui": "4.2.0",
     "eslint": "^9.39.1",
-    "nuxt": "^4.2.1",
-    "nuxt-lucide-icons": "^2.0.0",
     "nuxt-marquee": "^1.0.4",
     "nuxt-svgo": "^4.2.6",
+    "nuxt": "^4.2.1",
+    "prettier": "^3.7.4",
     "typescript": "^5.9.3"
   }
 }
