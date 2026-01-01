@@ -6,6 +6,17 @@ export default defineNuxtConfig({
   lucide: {
     namePrefix: "Icon",
   },
+  app: {
+    head: {
+      link: [
+        {
+          rel: "icon",
+          type: "image/svg+xml",
+          href: "/logo.svg",
+        },
+      ],
+    },
+  },
   fonts: {
     families: [
       {
