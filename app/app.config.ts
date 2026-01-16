@@ -1,15 +1,15 @@
 export default defineAppConfig({
   ui: {
     colors: {
-      primary: "brand",
-      neutral: "background",
+      primary: 'brand',
+      neutral: 'neutral',
     },
     button: {
       defaultVariants: {
-        size: "xl",
+        size: 'xl',
       },
       slots: {
-        base: "cursor-pointer",
+        base: 'cursor-pointer',
       },
     },
   },

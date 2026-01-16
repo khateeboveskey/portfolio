@@ -1,8 +1,8 @@
-@import "tailwindcss";
-@import "@nuxt/ui";
+@import 'tailwindcss';
+@import '@nuxt/ui';
 
 @theme {
-  --font-display: "Funnel Display Variable", sans-serif;
+  --font-display: 'Funnel Display Variable', sans-serif;
 }
 
 @theme static {
@@ -44,21 +44,12 @@
 }
 
 :root {
-  /* Primary */
-  --ui-primary: var(--color-brand-500);
-
-  /* Text */
-  --ui-text: var(--color-foreground-500);
-  --ui-text-inverted: var(--color-background-500);
-
-  /* Background */
-  --ui-bg: var(--color-background-500);
-  --ui-bg-inverted: var(--color-foreground-500);
-
-  --ui-border: var(--color-foreground-500);
-
   /* Radius */
   --ui-radius: 0rem;
+}
+
+.dark {
+  --ui-primary: var(--color-brand-500);
 }
 
 * {

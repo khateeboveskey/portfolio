@@ -1,6 +1,9 @@
 {
   "name": "khateeboveskey-github-io",
   "type": "module",
+  "imports": {
+    "#build/*": "./.nuxt/*"
+  },
   "private": true,
   "scripts": {
     "build": "nuxt build",
@@ -21,6 +24,7 @@
     "nuxt": "^4.2.2",
     "nuxt-marquee": "^1.0.4",
     "prettier": "^3.8.0",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "zod": "^4.3.5"
   }
 }
