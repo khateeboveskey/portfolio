@@ -15,7 +15,10 @@
       <p class="mb-6 text-base opacity-90 sm:mb-8 sm:text-lg md:text-2xl">
         I code, train, and do good stuff.
       </p>
-      <UiCTAButton text="Got an idea?" class="w-full sm:w-auto" />
+      <UiCTAButton
+        text="Got an idea?"
+        class="w-full sm:w-auto justify-center md:justify-start"
+      />
     </div>
     <div class="relative w-full md:me-14 md:w-1/2">
       <AppLogo

@@ -22,6 +22,9 @@ export default defineNuxtConfig({
       },
     ],
   },
+  ui: {
+    colorMode: false,
+  },
   modules: [
     '@nuxt/a11y',
     '@nuxt/eslint',

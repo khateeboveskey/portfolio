@@ -1,9 +1,9 @@
 <template>
   <div
-    class="z-20 -mt-16 grid h-[calc(100vh/5)] w-screen place-items-center overflow-hidden sm:overflow-visible"
+    class="z-20 -mt-20 md:-mt-16 grid h-[calc(100vh/5)] w-screen place-items-center overflow-hidden sm:overflow-visible"
   >
     <div
-      class="bg-inverted text-inverted w-[calc(100vw+100px)] -translate-x-10 -rotate-[3deg] overflow-hidden py-4 text-base uppercase sm:py-6 sm:text-lg md:py-8 md:text-xl"
+      class="bg-inverted text-inverted w-[calc(100vw+100px)] -translate-x-10 -rotate-3 overflow-hidden py-4 text-base uppercase sm:py-6 sm:text-lg md:py-8 md:text-xl"
     >
       <div
         class="whitespace-nowrap"
@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-const titles = ["Web Developer", "UI/UX Designer", "Content Creator", "Author"];
+const titles = ['Web Developer', 'UI/UX Designer', 'Content Creator', 'Author'];
 const scrollPosition = ref(0);
 const duplicatedTitles = computed(() => [...titles, ...titles, ...titles]);
 
@@ -34,10 +34,10 @@ const handleScroll = () => {
 };
 
 onMounted(() => {
-  window.addEventListener("scroll", handleScroll);
+  window.addEventListener('scroll', handleScroll);
 });
 
 onUnmounted(() => {
-  window.removeEventListener("scroll", handleScroll);
+  window.removeEventListener('scroll', handleScroll);
 });
 </script>

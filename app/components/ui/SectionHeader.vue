@@ -8,7 +8,7 @@
     </h2>
     <span
       v-if="props.subtitle"
-      class="text-sm font-medium tracking-widest uppercase md:text-base"
+      class="text-sm font-medium tracking-widest uppercase md:text-base text-dimmed"
     >
       {{ props.subtitle }}
     </span>
@@ -16,10 +16,5 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
-  subtitle: {
-    type: String,
-    default: "",
-  },
-});
+const props = defineProps<{ subtitle?: string }>();
 </script>

@@ -15,6 +15,6 @@
 
 <script setup lang="ts">
 useHead({
-  title: "Home",
+  title: 'Home',
 });
 </script>
