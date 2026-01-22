@@ -8,28 +8,26 @@ soft:
   - Meeting and Public Speaking
   - Time Management
   - Technical Training
+
 hard:
-  - name: Sass
-    deviconClass: devicon-sass-original
-  - name: Bootstrap
-    deviconClass: devicon-bootstrap-plain
-  - name: TailwindCSS
-    deviconClass: devicon-tailwindcss-original
   - name: TypeScript
-    deviconClass: devicon-typescript-plain
+    icon: logos:typescript-icon
+    website: https://www.typescriptlang.org/
+  - name: Tailwind CSS
+    icon: logos:tailwindcss-icon
+    website: http://tailwindcss.com/
   - name: Vue
-    deviconClass: devicon-vuejs-plain
+    icon: logos:vue
+    website: https://vuejs.org/
   - name: Nuxt
-    deviconClass: devicon-nuxtjs-plain
-  - name: React
-    deviconClass: devicon-react-original-wordmark
-  - name: React Native
-    deviconClass: devicon-react-original
-  - name: PHP
-    deviconClass: devicon-php-plain
+    icon: logos:nuxt-icon
+    website: https://nuxt.com/
+  - name: Pinia
+    icon: logos:pinia
+    website: https://pinia.vuejs.org/
+  - name: Vitest
+    icon: logos:vitest
+    website: https://vitest.dev/
   - name: Laravel
-    deviconClass: devicon-laravel-original
-  - name: Git
-    deviconClass: devicon-git-plain
-  - name: GitHub
-    deviconClass: devicon-github-original
+    icon: logos:laravel
+    website: https://laravel.com/

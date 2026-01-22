@@ -40,7 +40,8 @@ export default defineContentConfig({
         hard: z.array(
           z.object({
             name: z.string(),
-            deviconClass: z.string(),
+            icon: z.string(),
+            website: z.string(),
           }),
         ),
       }),

@@ -1,29 +1,22 @@
 <template>
   <section class="px-4 md:px-8 lg:px-16 xl:px-32">
-    <UiSectionHeader subtitle="What I can deal with">Skills</UiSectionHeader>
-    <NuxtMarquee
-      class="text-default/50"
-      pause-on-hover
-      gradient
-      auto-fill
-      gradient-color="var(--ui-bg)"
+    <UiSectionHeader subtitle="What I'm good at">Skills</UiSectionHeader>
+    <div
+      class="flex flex-wrap justify-center md:justify-between items-center gap-4"
     >
-      <div
-        v-for="(skill, index) in hardSkills"
+      <NuxtLink
+        v-for="skill in skills?.hard"
         :key="skill.name"
-        :title="skill.name"
-        @mouseover="hoveredIndex = index"
-        @mouseleave="hoveredIndex = null"
+        :to="skill.website"
+        target="_blank"
+        rel="noopener noreferrer"
       >
-        <i
-          :class="[
-            'text-5xl md:text-6xl lg:text-7xl me-8',
-            { colored: hoveredIndex === index },
-            skill.deviconClass,
-          ]"
+        <UIcon
+          :name="skill.icon"
+          class="size-16 md:size-24 lg:size-30 grayscale hover:grayscale-0 transition-all"
         />
-      </div>
-    </NuxtMarquee>
+      </NuxtLink>
+    </div>
   </section>
 </template>
 
@@ -31,7 +24,4 @@
 const { data: skills } = await useAsyncData('skills', () =>
   queryCollection('skills').first(),
 );
-
-const hardSkills = computed(() => skills.value?.hard ?? []);
-const hoveredIndex = ref<number | null>(null);
 </script>
