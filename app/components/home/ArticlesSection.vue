@@ -9,15 +9,15 @@
         <a
           :href="article.url"
           target="_blank"
-          class="border-accent-foreground hover:bg-accent-foreground hover:text-accent-background group flex min-h-[12rem] flex-col items-start justify-between border-2 p-4 md:h-48 md:flex-row md:items-center md:gap-10 md:px-6 md:py-6 lg:px-10 lg:py-9"
+          class="hover:bg-inverted hover:text-inverted group flex min-h-[12rem] flex-col items-start justify-between border-2 p-4 md:h-48 md:flex-row md:items-center md:gap-10 md:px-6 md:py-6 lg:px-10 lg:py-9"
         >
           <div class="mb-4 flex-1 space-y-2 md:mb-0 md:space-y-3">
             <div
-              class="text-accent text-sm font-medium tracking-wider uppercase md:text-base"
+              class="text-primary text-sm font-medium tracking-wider uppercase md:text-base"
             >
               {{ article.category }}
               <span
-                class="text-accent-foreground group-hover:text-accent-background ml-2 opacity-50"
+                class="text-default group-hover:text-inverted ml-2 opacity-50"
               >
                 {{
                   new Intl.DateTimeFormat("en-US", {
@@ -41,7 +41,7 @@
             >
               {{ article.description }}
             </div>
-            <div class="text-accent text-sm md:text-base">
+            <div class="text-primary text-sm md:text-base">
               Show on {{ article.urlTo }}
               <svg
                 xmlns="http://www.w3.org/2000/svg"

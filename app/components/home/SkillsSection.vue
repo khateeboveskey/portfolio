@@ -2,11 +2,11 @@
   <section class="px-4 md:px-8 lg:px-16 xl:px-32">
     <UiSectionHeader subtitle="What I can deal with">Skills</UiSectionHeader>
     <NuxtMarquee
-      class="text-neutral-500"
+      class="text-default/50"
       pause-on-hover
       gradient
       auto-fill
-      gradient-color="var(--color-accent-background)"
+      gradient-color="var(--ui-bg)"
     >
       <div
         v-for="(skill, index) in skills.hard"

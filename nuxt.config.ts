@@ -1,27 +1,37 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: "2025-07-15",
+  compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  css: ["@/assets/css/main.css"],
-  lucide: {
-    namePrefix: "Icon",
+  css: ['@/assets/css/main.css'],
+  app: {
+    head: {
+      link: [
+        {
+          rel: 'icon',
+          type: 'image/svg+xml',
+          href: '/logo.svg',
+        },
+      ],
+    },
   },
   fonts: {
     families: [
       {
-        name: "Funnel Display Variable",
-        src: "/fonts/FunnelDisplay-VariableFont_wght.woff2",
+        name: 'Funnel Display Variable',
+        src: '/fonts/FunnelDisplay-VariableFont_wght.woff2',
       },
     ],
   },
+  ui: {
+    colorMode: false,
+  },
   modules: [
-    "@nuxt/eslint",
-    "@nuxt/fonts",
-    "@nuxt/hints",
-    "@nuxt/image",
-    "@nuxt/ui",
-    "nuxt-lucide-icons",
-    "nuxt-marquee",
-    "nuxt-svgo",
+    '@nuxt/a11y',
+    '@nuxt/eslint',
+    '@nuxt/fonts',
+    '@nuxt/hints',
+    '@nuxt/image',
+    '@nuxt/ui',
+    'nuxt-marquee',
   ],
 });

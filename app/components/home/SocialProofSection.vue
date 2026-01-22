@@ -1,30 +1,28 @@
 <template>
   <section class="px-4 md:px-8 lg:px-16 xl:px-32">
-    <UiSectionHeader subtitle="What greate people say about me"
-      >Social Proof</UiSectionHeader
-    >
+    <UiSectionHeader subtitle="What greate people say about me">
+      Social Proof
+    </UiSectionHeader>
     <div
       class="flex flex-column md:flex-row gap-4 sm:gap-6 lg:gap-8 mt-8 justify-center"
     >
       <div
         v-for="(reference, index) in socialProof"
         :key="index"
-        class="bg-accent-background-muted flex flex-col w-4/5 md:w-1/2 lg:w-1/3"
+        class="flex flex-col w-4/5 md:w-1/2 lg:w-1/3"
       >
-        <div class="bg-accent p-4 sm:p-5">
+        <div class="text-primary p-4 sm:p-5 bg-primary">
           <h4 class="text-xl sm:text-2xl font-bold text-white mb-2 text-center">
             {{ reference.name }}
           </h4>
-          <span
-            class="text-xs sm:text-sm text-white font-lighter block text-center"
-            >{{ reference.degree }}</span
-          >
-          <span
-            class="text-xs sm:text-sm text-white font-lighter block text-center"
-            >{{ reference.position }}</span
-          >
+          <p class="text-xs sm:text-sm text-white font-lighter text-center">
+            {{ reference.degree }}
+          </p>
+          <p class="text-xs sm:text-sm text-white font-lighter text-center">
+            {{ reference.position }}
+          </p>
         </div>
-        <div class="relative overflow-hidden flex-1">
+        <div class="relative overflow-hidden flex-1 bg-accented/20">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -43,7 +41,7 @@
             />
           </svg>
           <p
-            class="text-accent-foreground italic p-4 sm:p-6 lg:p-10 text-sm sm:text-base relative z-10"
+            class="italic p-4 sm:p-6 lg:p-10 text-sm sm:text-base relative z-10"
           >
             "{{ reference.quote }}"
           </p>
