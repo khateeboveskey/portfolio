@@ -24,6 +24,7 @@
     "eslint": "^9.39.2",
     "nuxt": "^4.2.2",
     "nuxt-marquee": "^1.0.4",
+    "nuxt-studio": "1.1.1",
     "prettier": "^3.8.0",
     "typescript": "^5.9.3",
     "zod": "3",

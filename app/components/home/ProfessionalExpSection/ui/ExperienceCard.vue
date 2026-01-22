@@ -30,30 +30,14 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
-  jobTitle: {
-    type: String,
-    default: "",
-  },
-  company: {
-    type: String,
-    default: "",
-  },
-  category: {
-    type: String,
-    default: "",
-  },
-  companyUrl: {
-    type: String,
-    default: "",
-  },
-  year: {
-    type: Number,
-    default: 0,
-  },
-  order: {
-    type: Number,
-    default: 0,
-  },
-});
+interface ExperienceCardProps {
+  jobTitle: string;
+  company: string;
+  category: string;
+  companyUrl?: string;
+  year: string | number;
+  order: number;
+}
+
+const props = defineProps<ExperienceCardProps>();
 </script>

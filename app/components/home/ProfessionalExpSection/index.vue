@@ -14,7 +14,7 @@
           :company="exp.company"
           :company-url="exp.website"
           :order="index + 1"
-          :year="parseInt(exp.startDate.slice(-4))"
+          :year="parseInt(exp.endDate.slice(-4)) || exp.endDate.toUpperCase()"
           :category="exp.category"
           class="w-full"
         />
