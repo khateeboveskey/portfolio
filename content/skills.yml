@@ -1,0 +1,35 @@
+soft:
+  - Teamwork
+  - Leadership and Influence
+  - Logical Thinking
+  - Problem Solving
+  - Creative Writing
+  - Decision Making
+  - Meeting and Public Speaking
+  - Time Management
+  - Technical Training
+hard:
+  - name: Sass
+    deviconClass: devicon-sass-original
+  - name: Bootstrap
+    deviconClass: devicon-bootstrap-plain
+  - name: TailwindCSS
+    deviconClass: devicon-tailwindcss-original
+  - name: TypeScript
+    deviconClass: devicon-typescript-plain
+  - name: Vue
+    deviconClass: devicon-vuejs-plain
+  - name: Nuxt
+    deviconClass: devicon-nuxtjs-plain
+  - name: React
+    deviconClass: devicon-react-original-wordmark
+  - name: React Native
+    deviconClass: devicon-react-original
+  - name: PHP
+    deviconClass: devicon-php-plain
+  - name: Laravel
+    deviconClass: devicon-laravel-original
+  - name: Git
+    deviconClass: devicon-git-plain
+  - name: GitHub
+    deviconClass: devicon-github-original

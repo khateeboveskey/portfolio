@@ -44,7 +44,12 @@
 </template>
 
 <script setup lang="ts">
-import { accounts, objective } from '@/assets/mydata.json';
+const { data: info } = await useAsyncData('personalInfo', () =>
+  queryCollection('personalInfo').first(),
+);
+
+const objective = computed(() => info.value?.objective ?? '');
+const accounts = computed(() => info.value?.accounts ?? {});
 
 useHead({
   link: [

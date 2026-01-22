@@ -9,7 +9,7 @@
       gradient-color="var(--ui-bg)"
     >
       <div
-        v-for="(skill, index) in skills.hard"
+        v-for="(skill, index) in hardSkills"
         :key="skill.name"
         :title="skill.name"
         @mouseover="hoveredIndex = index"
@@ -28,7 +28,10 @@
 </template>
 
 <script setup lang="ts">
-import { skills } from "@/assets/mydata.json";
+const { data: skills } = await useAsyncData('skills', () =>
+  queryCollection('skills').first(),
+);
 
+const hardSkills = computed(() => skills.value?.hard ?? []);
 const hoveredIndex = ref<number | null>(null);
 </script>

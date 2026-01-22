@@ -1,0 +1,8 @@
+name: Balqis Association
+type: Website
+year: 2023
+stack:
+  - Vue
+  - TailwindCSS
+githubRepo: https://github.com/khateeboveskey/balqis-association
+image: balqis-association.png

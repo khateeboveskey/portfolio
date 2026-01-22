@@ -1,0 +1,8 @@
+name: Awam E-Book Library
+type: Web App
+year: 2024
+stack:
+  - Laravel
+  - TailwindCSS
+githubRepo: https://github.com/khateeboveskey/awam-ebooks-library
+image: awam-ebooks-library.png

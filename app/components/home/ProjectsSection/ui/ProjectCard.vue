@@ -47,7 +47,9 @@
 </template>
 
 <script setup lang="ts">
-import { skills } from '@/assets/mydata.json';
+const { data: skills } = await useAsyncData('skills', () =>
+  queryCollection('skills').first(),
+);
 
 const props = defineProps({
   project: {
@@ -58,7 +60,7 @@ const props = defineProps({
 
 function getDevIcon(name: string): string {
   return (
-    skills.hard.find((skill) => skill.name === name)?.deviconClass ??
+    skills.value?.hard.find((skill) => skill.name === name)?.deviconClass ??
     `devicon-${name.toLowerCase()}-plain`
   );
 }

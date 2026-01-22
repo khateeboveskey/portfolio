@@ -52,5 +52,7 @@
 </template>
 
 <script setup lang="ts">
-import { socialProof } from "@/assets/mydata.json";
+const { data: socialProof } = await useAsyncData('socialProof', () =>
+  queryCollection('socialProof').all(),
+);
 </script>

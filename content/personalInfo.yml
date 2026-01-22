@@ -1,0 +1,26 @@
+isAvailableToWork: true
+objective: >-
+  Passionate Full-Stack Developer and Technical Trainer with 3+ years of
+  experience in web development. Seeking a challenging role where I can build
+  scalable applications, enhance user experiences, and contribute to innovative
+  projects while leveraging my expertise in software development.
+personalInfo:
+  name: A.Rahman S. Al-Khateeb
+  occupation: Full-stack Developer
+  dateOfBirth: 2003-7-3
+  address: Yemen, Aden, Al-Mansoura
+  maritalStatus: Engaged
+  nationality: Yemeni
+contactInfo:
+  phone: '+967776218541'
+  email: khateeboveskey@gmail.com
+accounts:
+  facebook: https://www.facebook.com/khateeboveskey
+  x-twitter: https://twitter.com/khateeb404
+  instagram: https://www.instagram.com/khateeb404
+  linkedin: https://www.linkedin.com/in/khateeb404
+  github: https://github.com/khateeboveskey
+  youtube: https://www.youtube.com/@khateebedia
+languages:
+  English: Fluent in writing and speaking
+  Arabic: Native

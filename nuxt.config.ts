@@ -33,5 +33,6 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/ui',
     'nuxt-marquee',
+    '@nuxt/content',
   ],
 });

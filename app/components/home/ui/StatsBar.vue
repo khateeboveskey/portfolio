@@ -36,30 +36,39 @@
 </template>
 
 <script setup lang="ts">
-import { projects } from "@/assets/mydata.json";
-import NumberFlow from "@number-flow/vue";
+import NumberFlow from '@number-flow/vue';
 
-const experienceYears: number =
-  new Date().getFullYear() -
-  (projects[projects.length - 1]?.year ?? new Date().getFullYear());
+const { data: projects } = await useAsyncData('projects', () =>
+  queryCollection('projects').order('year', 'DESC').all(),
+);
 
-const snapInfoGroup = [
+const experienceYears = computed(() => {
+  if (!projects.value || projects.value.length === 0) return 0;
+  // Assuming ordered by path, which corresponds to original ID order
+  return (
+    new Date().getFullYear() -
+    (projects.value[projects.value.length - 1]?.year ??
+      new Date().getFullYear())
+  );
+});
+
+const snapInfoGroup = computed(() => [
   {
-    title: "Projects",
-    content: projects.length,
+    title: 'Projects',
+    content: projects.value?.length ?? 0,
   },
   {
-    title: "Years Experience",
-    content: experienceYears,
+    title: 'Years Experience',
+    content: experienceYears.value,
   },
   {
-    title: "Student Trained",
-    content: "130",
+    title: 'Student Trained',
+    content: '130',
   },
-];
+]);
 
 const snapRefs = ref<HTMLDivElement[]>([]);
-const visible = ref<boolean[]>(snapInfoGroup.map(() => false));
+const visible = ref<boolean[]>(snapInfoGroup.value.map(() => false));
 
 let observer: IntersectionObserver;
 
@@ -74,7 +83,7 @@ onMounted(() => {
         }
       });
     },
-    { threshold: 1 } // Trigger when 10% of the element is visible
+    { threshold: 1 }, // Trigger when 10% of the element is visible
   );
 
   snapRefs.value.forEach((el) => {

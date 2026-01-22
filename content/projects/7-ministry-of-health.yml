@@ -1,0 +1,9 @@
+name: Ministry of Health
+type: Website
+year: 2022
+stack:
+  - HTML5
+  - CSS3
+  - JavaScript
+githubRepo: null
+image: moh.png

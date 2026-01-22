@@ -15,6 +15,7 @@
   "dependencies": {
     "@number-flow/vue": "^0.4.8",
     "@nuxt/a11y": "1.0.0-alpha.1",
+    "@nuxt/content": "^3.11.0",
     "@nuxt/eslint": "1.10.0",
     "@nuxt/fonts": "0.12.1",
     "@nuxt/hints": "1.0.0-alpha.1",
@@ -25,6 +26,11 @@
     "nuxt-marquee": "^1.0.4",
     "prettier": "^3.8.0",
     "typescript": "^5.9.3",
-    "zod": "^4.3.5"
+    "zod": "3",
+    "zod-to-json-schema": "^3.25.1"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "js-yaml": "^4.1.1"
   }
 }

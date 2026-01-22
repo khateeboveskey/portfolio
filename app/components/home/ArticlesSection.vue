@@ -2,10 +2,7 @@
   <section class="px-4 md:px-8 lg:px-16 xl:px-32">
     <UiSectionHeader subtitle="What I've Written">Articles</UiSectionHeader>
     <ul class="space-y-4 md:space-y-6 lg:space-y-10">
-      <li
-        v-for="(article, index) in experience.personal.creativeWriting"
-        :key="index"
-      >
+      <li v-for="(article, index) in articles" :key="index">
         <a
           :href="article.url"
           target="_blank"
@@ -20,10 +17,10 @@
                 class="text-default group-hover:text-inverted ml-2 opacity-50"
               >
                 {{
-                  new Intl.DateTimeFormat("en-US", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
+                  new Intl.DateTimeFormat('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
                   }).format(new Date(article.datePublished))
                 }}
               </span>
@@ -68,5 +65,7 @@
 </template>
 
 <script setup lang="ts">
-import { experience } from "@/assets/mydata.json";
+const { data: articles } = await useAsyncData('articles', () =>
+  queryCollection('articles').order('datePublished', 'DESC').all(),
+);
 </script>
