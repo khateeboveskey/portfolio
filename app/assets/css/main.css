@@ -44,12 +44,39 @@
 }
 
 :root {
+  /* Primary */
+  --ui-primary: var(--color-brand-500);
+
+  /* Text */
+  --ui-text: var(--color-foreground-500);
+  --ui-text-inverted: var(--color-background-500);
+
+  /* Background */
+  --ui-bg: var(--color-background-500);
+  --ui-bg-inverted: var(--color-foreground-500);
+
+  --ui-border: var(--color-foreground-500);
+
   /* Radius */
   --ui-radius: 0rem;
 }
 
 .dark {
-  --ui-primary: var(--color-brand-500);
+  /* Primary */
+  --ui-primary: var(--color-brand-400);
+
+  /* Text */
+  --ui-text: var(--color-background-500);
+  --ui-text-inverted: var(--color-foreground-500);
+
+  /* Background */
+  --ui-bg: var(--color-foreground-500);
+  --ui-bg-inverted: var(--color-background-500);
+
+  --ui-border: var(--color-background-500);
+
+  /* Radius */
+  --ui-radius: 0rem;
 }
 
 * {
