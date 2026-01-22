@@ -1,0 +1,33 @@
+soft:
+  - Teamwork
+  - Leadership and Influence
+  - Logical Thinking
+  - Problem Solving
+  - Creative Writing
+  - Decision Making
+  - Meeting and Public Speaking
+  - Time Management
+  - Technical Training
+
+hard:
+  - name: TypeScript
+    icon: logos:typescript-icon
+    website: https://www.typescriptlang.org/
+  - name: Tailwind CSS
+    icon: logos:tailwindcss-icon
+    website: http://tailwindcss.com/
+  - name: Vue
+    icon: logos:vue
+    website: https://vuejs.org/
+  - name: Nuxt
+    icon: logos:nuxt-icon
+    website: https://nuxt.com/
+  - name: Pinia
+    icon: logos:pinia
+    website: https://pinia.vuejs.org/
+  - name: Vitest
+    icon: logos:vitest
+    website: https://vitest.dev/
+  - name: Laravel
+    icon: logos:laravel
+    website: https://laravel.com/

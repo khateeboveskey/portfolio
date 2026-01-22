@@ -16,5 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import { projects } from "@/assets/mydata.json";
+const { data: projects } = await useAsyncData('projects', () =>
+  queryCollection('projects').order('year', 'DESC').all(),
+);
 </script>

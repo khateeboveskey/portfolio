@@ -88,12 +88,17 @@
 </template>
 
 <script setup lang="ts">
-import { accounts } from "@/assets/mydata.json";
-import { ref, computed } from "vue";
+import { ref, computed } from 'vue';
 
-const messageDirection = ref("ltr");
-const email = ref("");
-const message = ref("");
+const { data: info } = await useAsyncData('personalInfo', () =>
+  queryCollection('personalInfo').first(),
+);
+
+const accounts = computed(() => info.value?.accounts ?? {});
+
+const messageDirection = ref('ltr');
+const email = ref('');
+const message = ref('');
 
 const isEmailValid = computed(() => {
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -110,9 +115,15 @@ const isFormValid = computed(() => {
   );
 });
 
+const validateForm = (e: Event) => {
+  if (!isFormValid.value) {
+    e.preventDefault();
+  }
+};
+
 const checkDirection = (event: Event) => {
   const text = (event.target as HTMLTextAreaElement).value;
   const firstChar = text.trim().charAt(0);
-  messageDirection.value = /[\u0600-\u06FF]/.test(firstChar) ? "rtl" : "ltr";
+  messageDirection.value = /[\u0600-\u06FF]/.test(firstChar) ? 'rtl' : 'ltr';
 };
 </script>

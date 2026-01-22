@@ -5,7 +5,7 @@
     >
     <ul class="space-y-6 sm:space-y-8 md:space-y-11">
       <li
-        v-for="(exp, index) in experience.professional"
+        v-for="(exp, index) in professionalExperience"
         :key="index"
         class="w-full"
       >
@@ -14,7 +14,7 @@
           :company="exp.company"
           :company-url="exp.website"
           :order="index + 1"
-          :year="parseInt(exp.startDate.slice(-4))"
+          :year="parseInt(exp.endDate.slice(-4)) || exp.endDate.toUpperCase()"
           :category="exp.category"
           class="w-full"
         />
@@ -24,6 +24,8 @@
 </template>
 
 <script setup lang="ts">
-import ExperienceCard from "@/components/home/ProfessionalExpSection/ui/ExperienceCard.vue";
-import { experience } from "@/assets/mydata.json";
+import ExperienceCard from '@/components/home/ProfessionalExpSection/ui/ExperienceCard.vue';
+const { data: professionalExperience } = await useAsyncData('experience', () =>
+  queryCollection('experience').order('endDate', 'DESC').all(),
+);
 </script>

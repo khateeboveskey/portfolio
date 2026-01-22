@@ -25,6 +25,22 @@ export default defineNuxtConfig({
   ui: {
     colorMode: false,
   },
+  studio: {
+    repository: {
+      provider: 'github',
+      owner: 'khateeboveskey',
+      repo: 'portfolio',
+      branch: 'main',
+    },
+  },
+  nitro: {
+    prerender: {
+      // Pre-render the homepage
+      routes: ['/'],
+      // Then crawl all the links on the page
+      crawlLinks: true,
+    },
+  },
   modules: [
     '@nuxt/a11y',
     '@nuxt/eslint',
@@ -33,5 +49,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/ui',
     'nuxt-marquee',
+    '@nuxt/content',
+    'nuxt-studio',
   ],
 });

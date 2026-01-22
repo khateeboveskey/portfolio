@@ -8,11 +8,11 @@
         <span
           class="text-default text-center text-xl font-semibold text-nowrap md:text-left md:text-3xl"
         >
-          Abdulrahman
+          {{ firstName }}
           <AppLogo
             class="mx-2 inline-block h-5 -translate-y-0.5 sm:mx-4 sm:h-5 md:mx-2 md:h-5"
           />
-          Al-Khateeb
+          {{ lastName }}
         </span>
         <h2
           class="text-default text-left text-4xl font-bold md:text-left md:text-5xl"
@@ -31,5 +31,16 @@
 </template>
 
 <script setup lang="ts">
-import { objective } from "@/assets/mydata.json";
+const { data: info } = await useAsyncData('personalInfo', () =>
+  queryCollection('personalInfo').first(),
+);
+
+const objective = computed(() => info.value?.objective ?? '');
+const fullnameWords = computed(
+  () => info.value?.personalInfo?.name.split(' ') ?? [],
+);
+const firstName = computed(() => fullnameWords.value[0] ?? '');
+const lastName = computed(
+  () => fullnameWords.value[fullnameWords.value.length - 1] ?? '',
+);
 </script>

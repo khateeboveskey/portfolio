@@ -1,0 +1,7 @@
+name: Morse Code Translator
+type: Desktop App
+year: 2023
+stack:
+  - CSharp
+githubRepo: https://github.com/khateeboveskey/winform-morse-code-translator
+image: winform-morse-code-translator.png
