@@ -31,7 +31,7 @@
 </template>
 
 <script setup lang="ts">
-const { data: info } = await useAsyncData('personalInfo', () =>
+const { data: info } = await useAsyncData('personalInfo:about', () =>
   queryCollection('personalInfo').first(),
 );
 

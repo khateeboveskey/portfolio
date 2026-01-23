@@ -44,7 +44,7 @@
 </template>
 
 <script setup lang="ts">
-const { data: info } = await useAsyncData('personalInfo', () =>
+const { data: info } = await useAsyncData('personalInfo:footer', () =>
   queryCollection('personalInfo').first(),
 );
 

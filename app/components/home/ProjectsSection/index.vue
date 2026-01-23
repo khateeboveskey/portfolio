@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-const { data: projects } = await useAsyncData('projects', () =>
+const { data: projects } = await useAsyncData('projects:home', () =>
   queryCollection('projects').order('year', 'DESC').all(),
 );
 </script>

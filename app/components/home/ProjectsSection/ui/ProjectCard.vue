@@ -47,7 +47,7 @@
 </template>
 
 <script setup lang="ts">
-const { data: skills } = await useAsyncData('skills', () =>
+const { data: skills } = await useAsyncData('skills:project-card', () =>
   queryCollection('skills').first(),
 );
 
