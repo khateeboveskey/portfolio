@@ -38,7 +38,7 @@
 <script setup lang="ts">
 import NumberFlow from '@number-flow/vue';
 
-const { data: projects } = await useAsyncData('projects', () =>
+const { data: projects } = await useAsyncData('projects:stats', () =>
   queryCollection('projects').order('year', 'DESC').all(),
 );
 

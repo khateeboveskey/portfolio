@@ -90,7 +90,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 
-const { data: info } = await useAsyncData('personalInfo', () =>
+const { data: info } = await useAsyncData('personalInfo:contact', () =>
   queryCollection('personalInfo').first(),
 );
 

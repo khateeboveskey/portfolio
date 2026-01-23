@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-const { data: skills } = await useAsyncData('skills', () =>
+const { data: skills } = await useAsyncData('skills:home', () =>
   queryCollection('skills').first(),
 );
 </script>
