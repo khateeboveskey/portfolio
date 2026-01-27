@@ -1,33 +1,69 @@
 soft:
-  - Teamwork
-  - Leadership and Influence
+  - Team Leadership
+  - Public Speaking
+  - Training & Mentorship
   - Logical Thinking
   - Problem Solving
-  - Creative Writing
-  - Decision Making
-  - Meeting and Public Speaking
   - Time Management
-  - Technical Training
 
 hard:
+  - name: JavaScript
+    icon: logos:javascript
+    website: https://developer.mozilla.org/en-US/docs/Web/JavaScript
   - name: TypeScript
     icon: logos:typescript-icon
     website: https://www.typescriptlang.org/
-  - name: Tailwind CSS
-    icon: logos:tailwindcss-icon
-    website: http://tailwindcss.com/
+  - name: PHP
+    icon: logos:php
+    website: https://www.php.net/
   - name: Vue
     icon: logos:vue
     website: https://vuejs.org/
   - name: Nuxt
     icon: logos:nuxt-icon
     website: https://nuxt.com/
-  - name: Pinia
-    icon: logos:pinia
-    website: https://pinia.vuejs.org/
-  - name: Vitest
-    icon: logos:vitest
-    website: https://vitest.dev/
+  - name: React
+    icon: logos:react
+    website: https://reactjs.org/
+  - name: React Native
+    icon: logos:react
+    website: https://reactnative.dev/
+  - name: Bootstrap
+    icon: logos:bootstrap
+    website: https://getbootstrap.com/
+  - name: Tailwind CSS
+    icon: logos:tailwindcss-icon
+    website: http://tailwindcss.com/
+  - name: Sass
+    icon: logos:sass
+    website: https://sass-lang.com/
   - name: Laravel
     icon: logos:laravel
     website: https://laravel.com/
+  - name: MySQL
+    icon: logos:mysql
+    website: https://www.mysql.com/
+  - name: SQLite
+    icon: logos:sqlite
+    website: https://www.sqlite.org/
+  - name: Cypress
+    icon: logos:cypress-icon
+    website: https://www.cypress.io/
+  - name: Vitest
+    icon: logos:vitest
+    website: https://vitest.dev/
+  - name: PHPUnit
+    icon: logos:phpunit
+    website: https://phpunit.de/
+  - name: Pest
+    icon: logos:pest
+    website: https://pestphp.com/
+  - name: Git
+    icon: logos:git-icon
+    website: https://git-scm.com/
+  - name: GitHub
+    icon: logos:github-icon
+    website: https://github.com/
+  - name: GitLab
+    icon: logos:gitlab-icon
+    website: https://gitlab.com/

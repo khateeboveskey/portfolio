@@ -20,6 +20,7 @@ export default defineContentConfig({
         contactInfo: z.object({
           phone: z.string(),
           email: z.string(),
+          website: z.string().optional(),
         }),
         accounts: z.object({
           facebook: z.string().optional(),

@@ -1,19 +1,21 @@
 isAvailableToWork: true
 objective: >-
   Passionate Full-Stack Developer and Technical Trainer with 3+ years of
-  experience in web development. Seeking a challenging role where I can build
-  scalable applications, enhance user experiences, and contribute to innovative
-  projects while leveraging my expertise in software development.
+  experience in web development and software project management. Seeking a
+  challenging role where I can build scalable applications, enhance user
+  experiences, and contribute to innovative projects while leveraging my
+  expertise in software development and training.
 personalInfo:
-  name: A.Rahman S. Al-Khateeb
-  occupation: Full-stack Developer
+  name: Abdulrahman Saleh Al-Khateeb
+  occupation: Full-Stack Developer & Technical Trainer
   dateOfBirth: 2003-7-3
-  address: Yemen, Aden, Al-Mansoura
+  address: Yemen, Aden
   maritalStatus: Engaged
   nationality: Yemeni
 contactInfo:
-  phone: '+967776218541'
+  phone: '+967 776218541'
   email: khateeboveskey@gmail.com
+  website: https://khateeb.is-a.dev
 accounts:
   facebook: https://www.facebook.com/khateeboveskey
   x-twitter: https://twitter.com/khateeb404

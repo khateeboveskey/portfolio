@@ -1,7 +1,46 @@
-achievements: []
+achievements:
+  - >-
+    Architected and delivered a production-grade SaaS frontend using Vue 3,
+    Nuxt, and TypeScript, emphasizing scalability, performance, and
+    maintainability.
+  - >-
+    Designed and implemented full RTL support, enabling seamless Arabic
+    localization and consistent UX across regional audiences.
+  - >-
+    Enforced strict type safety through well-structured TypeScript
+    interfaces, significantly reducing runtime errors during dynamic content
+    rendering.
+  - >-
+    Built and scaled "Ataa SaaS", a multi-tenant platform serving Admin
+    Panels and Storefronts (saas.ataa.com.sa), and developed tenant examples.
+  - >-
+    Developed "Ataa Store", a high-performance digital charity platform that
+    enables users to browse donation opportunities, pay Zakat, and manage
+    personal dashboards with a focus on secure payments and mobile-first
+    responsiveness.
+  - >-
+    Developed the official website of Rokn Al-Hewar (edialoguec.org.sa),
+    ensuring brand consistency and accessibility.
+  - >-
+    Engineered "Ataa Admin", a robust administrative dashboard for managing
+    donation campaigns, gifts, financial reports, and donor data within a
+    high-traffic charity ecosystem.
+  - >-
+    Established a responsive design system using Tailwind CSS (Vite) and
+    standardized typography via Google Fonts (IBM Plex Sans Arabic) with
+    @nuxt/fonts.
+  - >-
+    Implemented multilingual support (Arabic / English) using @nuxtjs/i18n,
+    ensuring maintainable localization workflows.
+  - >-
+    Optimized Core Web Vitals by integrating nuxt-svgo for SVG processing and
+    @nuxt/image for automated image optimization.
+  - >-
+    Leveraged VueUse to integrate browser APIs and streamline reusable state
+    and composable logic.
 category: Frontend Development
 company: Smart Life
-endDate: "present"
+endDate: null
 position: Mid-senior Frontend Developer
-startDate: "2024"
+startDate: '2025-03-01'
 website: https://smartlife.ws/

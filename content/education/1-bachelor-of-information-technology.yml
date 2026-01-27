@@ -1,6 +1,13 @@
-degree: Bachelor of Information Technology
-university: University of Science and Technology
+degree: Bachelor - Information Technology
+university: University of Science & Technology, Aden
 location: Aden
 startYear: 2021
 endYear: 2025
 grade: null
+relevantCoursework:
+  - Problem Solving and Programming
+  - Web Design
+  - Database Systems
+  - Object-Oriented Programming
+  - Web Applications Development
+  - Database Administration
