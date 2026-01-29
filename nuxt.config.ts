@@ -42,6 +42,7 @@ export default defineNuxtConfig({
       // Recommended for Cloudflare Pages route matching
       autoSubfolderIndex: false,
     },
+    preset: 'cloudflare-pages',
   },
   modules: [
     '@nuxt/a11y',
