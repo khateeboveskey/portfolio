@@ -12,17 +12,12 @@
         </h2>
       </div>
       <div class="flex items-center gap-4">
-        <USelectMenu
+        <USelect
           v-model="selectedVersion"
-          :options="resumeVersions"
-          value-attribute="value"
-          option-attribute="label"
+          :options="resumeVersionOptions"
           size="xl"
-        >
-          <template #label>
-            {{ selectedVersionLabel }}
-          </template>
-        </USelectMenu>
+          class="w-64"
+        />
         <UButton
           icon="material-symbols:download-sharp"
           size="xl"
@@ -40,10 +35,10 @@ import { resumeVersions, resumeConfig } from '~/config/resume.config';
 
 const selectedVersion = ref<'summarized' | 'normal' | 'detailed'>('normal');
 
-const selectedVersionLabel = computed(() => {
-  const version = resumeVersions.find((v) => v.value === selectedVersion.value);
-  return version?.label || 'Normal Resume';
-});
+const resumeVersionOptions = resumeVersions.map((v) => ({
+  value: v.value,
+  label: v.label,
+}));
 
 const downloadResume = () => {
   // Get the sections for the selected version

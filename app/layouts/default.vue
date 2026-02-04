@@ -5,12 +5,22 @@
       <slot />
       <AppFooter />
     </div>
-    <Resume class="hidden print:block" />
+    <Resume v-if="resumeSections.length > 0" class="hidden print:block" :sections="resumeSections" />
   </div>
 </template>
 
 <script setup lang="ts">
+import { resumeConfig } from '~/config/resume.config';
+import type { ResumeSectionType } from '~/config/resume.config';
+
 const { data } = await usePersonalInfo();
+
+const resumeSections = ref<ResumeSectionType[]>([]);
+
+// Set default sections for print layout
+onMounted(() => {
+  resumeSections.value = resumeConfig.normal.sections;
+});
 
 useHead({
   meta: [
