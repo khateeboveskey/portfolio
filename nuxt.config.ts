@@ -39,6 +39,8 @@ export default defineNuxtConfig({
       routes: ['/'],
       // Then crawl all the links on the page
       crawlLinks: true,
+      // Recommended for Cloudflare Pages route matching
+      autoSubfolderIndex: false,
     },
   },
   modules: [
