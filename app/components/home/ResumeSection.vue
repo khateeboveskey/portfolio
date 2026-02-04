@@ -1,5 +1,5 @@
 <template>
-  <section class="mt-32 py-16 pt-32 bg-muted">
+  <section class="mt-32 bg-muted py-16 pt-32">
     <div
       class="container mx-auto flex flex-col items-center gap-8 px-4 md:flex-row md:justify-between md:px-8"
     >
@@ -11,15 +11,55 @@
           Want to know more? download my resume
         </h2>
       </div>
-      <UButton
-        href="khateeb-resume.pdf"
-        target="_blank"
-        icon="material-symbols:download-sharp"
-        download
-        size="xl"
-      >
-        Download Resume
-      </UButton>
+      <div class="flex items-center gap-4">
+        <USelect
+          v-model="selectedVersion"
+          :options="resumeVersionOptions"
+          size="xl"
+          class="w-64"
+        />
+        <UButton
+          icon="material-symbols:download-sharp"
+          size="xl"
+          @click="downloadResume"
+        >
+          Download
+        </UButton>
+      </div>
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+import { resumeVersions, resumeConfig } from '~/config/resume.config';
+
+const selectedVersion = ref<'summarized' | 'normal' | 'detailed'>('normal');
+
+const resumeVersionOptions = resumeVersions.map((v) => ({
+  value: v.value,
+  label: v.label,
+}));
+
+const downloadResume = () => {
+  // Get the sections for the selected version
+  const sections = resumeConfig[selectedVersion.value].sections;
+  
+  // Store the selected version and sections in sessionStorage for the print page
+  if (typeof window !== 'undefined') {
+    sessionStorage.setItem('resumeVersion', selectedVersion.value);
+    sessionStorage.setItem('resumeSections', JSON.stringify(sections));
+    
+    // Open a new window for printing
+    const printWindow = window.open('/print-resume', '_blank');
+    
+    // After the window loads, trigger print
+    if (printWindow) {
+      printWindow.addEventListener('load', () => {
+        setTimeout(() => {
+          printWindow.print();
+        }, 500);
+      });
+    }
+  }
+};
+</script>
