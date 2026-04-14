@@ -152,5 +152,22 @@ export default defineContentConfig({
         skillsUsed: z.array(z.string()),
       }),
     }),
+    certifications: defineCollection({
+      type: 'data',
+      source: 'certifications/*.yml',
+      schema: z.object({
+        title: z.string(),
+        organization: z.string(),
+        year: z.number(),
+      }),
+    }),
+    personalHighlights: defineCollection({
+      type: 'data',
+      source: 'personal-highlights/*.yml',
+      schema: z.object({
+        title: z.string(),
+        achievements: z.array(z.string()),
+      }),
+    }),
   },
 });

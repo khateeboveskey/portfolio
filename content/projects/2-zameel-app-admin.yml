@@ -1,0 +1,9 @@
+name: Zameel App Admin
+type: Web App
+year: 2025
+stack:
+  - TypeScript
+  - Vue
+  - Nuxt
+githubRepo: https://github.com/khateeboveskey/zameel-admin
+image: zameel.png
