@@ -65,7 +65,10 @@
 </template>
 
 <script setup lang="ts">
-const { data: articles } = await useAsyncData('articles', () =>
-  queryCollection('articles').order('datePublished', 'DESC').all(),
-);
+const { data: articles } = await useAsyncData('articles', async () => {
+  const all = await queryCollection('articles')
+    .order('datePublished', 'DESC')
+    .all();
+  return featuredOrFallback(all, 3);
+});
 </script>

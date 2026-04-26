@@ -5,7 +5,7 @@
       class="flex flex-wrap justify-center md:justify-between items-center gap-4"
     >
       <NuxtLink
-        v-for="skill in skills?.hard"
+        v-for="skill in featuredSkills"
         :key="skill.name"
         :to="skill.website"
         target="_blank"
@@ -23,5 +23,9 @@
 <script setup lang="ts">
 const { data: skills } = await useAsyncData('skills:home', () =>
   queryCollection('skills').first(),
+);
+
+const featuredSkills = computed(() =>
+  featuredOrFallback(skills.value?.hard ?? [], 8),
 );
 </script>

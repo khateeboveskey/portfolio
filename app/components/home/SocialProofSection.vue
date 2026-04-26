@@ -52,7 +52,8 @@
 </template>
 
 <script setup lang="ts">
-const { data: socialProof } = await useAsyncData('socialProof', () =>
-  queryCollection('socialProof').all(),
-);
+const { data: socialProof } = await useAsyncData('socialProof', async () => {
+  const all = await queryCollection('socialProof').all();
+  return featuredOrFallback(all, 3);
+});
 </script>

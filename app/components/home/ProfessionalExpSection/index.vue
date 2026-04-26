@@ -25,7 +25,11 @@
 
 <script setup lang="ts">
 import ExperienceCard from '@/components/home/ProfessionalExpSection/ui/ExperienceCard.vue';
-const { data: professionalExperience } = await useAsyncData('experience', () =>
-  queryCollection('experience').order('endDate', 'DESC').all(),
+const { data: professionalExperience } = await useAsyncData(
+  'experience',
+  async () => {
+    const all = await queryCollection('experience').order('stem', 'DESC').all();
+    return featuredOrFallback(all, 4);
+  },
 );
 </script>

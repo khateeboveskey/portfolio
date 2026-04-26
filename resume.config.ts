@@ -105,7 +105,7 @@ const resumeConfig: ResumeConfig = {
           'React Native',
         ],
         Database: ['MySQL', 'SQLite'],
-        Testing: ['Cypress', 'Vitest'],
+        Testing: ['Playwright', 'Vitest'],
         'Tools & DevOps': ['Git'],
       },
     },

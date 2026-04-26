@@ -42,6 +42,7 @@ export default defineContentConfig({
             name: z.string(),
             icon: z.string(),
             website: z.string(),
+            featured: z.boolean().optional(),
           }),
         ),
       }),
@@ -57,6 +58,7 @@ export default defineContentConfig({
         company: z.string(),
         website: z.string().optional(),
         achievements: z.array(z.string()),
+        featured: z.boolean().optional(),
       }),
     }),
     projects: defineCollection({
@@ -69,6 +71,7 @@ export default defineContentConfig({
         stack: z.array(z.string()),
         githubRepo: z.string().nullable(),
         image: z.string(),
+        featured: z.boolean().optional(),
       }),
     }),
     articles: defineCollection({
@@ -82,6 +85,7 @@ export default defineContentConfig({
         datePublished: z.string(),
         url: z.string(),
         urlTo: z.string(),
+        featured: z.boolean().optional(),
       }),
     }),
     education: defineCollection({
@@ -105,6 +109,7 @@ export default defineContentConfig({
         title: z.string(),
         host: z.string(),
         year: z.number(),
+        featured: z.boolean().optional(),
       }),
     }),
     socialProof: defineCollection({
@@ -116,6 +121,7 @@ export default defineContentConfig({
         degree: z.string(),
         position: z.string(),
         quote: z.string(),
+        featured: z.boolean().optional(),
       }),
     }),
     references: defineCollection({
@@ -150,6 +156,7 @@ export default defineContentConfig({
         donor: z.string(),
         year: z.number(),
         skillsUsed: z.array(z.string()),
+        featured: z.boolean().optional(),
       }),
     }),
     certifications: defineCollection({
@@ -159,6 +166,7 @@ export default defineContentConfig({
         title: z.string(),
         organization: z.string(),
         year: z.number(),
+        featured: z.boolean().optional(),
       }),
     }),
     personalHighlights: defineCollection({
@@ -167,6 +175,7 @@ export default defineContentConfig({
       schema: z.object({
         title: z.string(),
         achievements: z.array(z.string()),
+        featured: z.boolean().optional(),
       }),
     }),
   },
