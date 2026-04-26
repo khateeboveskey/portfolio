@@ -26,6 +26,6 @@ const { data: skills } = await useAsyncData('skills:home', () =>
 );
 
 const featuredSkills = computed(() =>
-  featuredOrFallback(skills.value?.hard ?? [], 8),
+  featuredOrFallback(skills.value?.hard ?? []),
 );
 </script>

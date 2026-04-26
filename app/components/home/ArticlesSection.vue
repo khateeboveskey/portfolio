@@ -69,6 +69,6 @@ const { data: articles } = await useAsyncData('articles', async () => {
   const all = await queryCollection('articles')
     .order('datePublished', 'DESC')
     .all();
-  return featuredOrFallback(all, 3);
+  return featuredOrFallback(all);
 });
 </script>

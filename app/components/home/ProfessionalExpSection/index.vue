@@ -29,7 +29,7 @@ const { data: professionalExperience } = await useAsyncData(
   'experience',
   async () => {
     const all = await queryCollection('experience').order('stem', 'DESC').all();
-    return featuredOrFallback(all, 4);
+    return featuredOrFallback(all);
   },
 );
 </script>
