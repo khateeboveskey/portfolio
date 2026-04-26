@@ -1,3 +1,7 @@
+<script setup lang="ts">
+const { generateResume, isGenerating } = useResumeGenerator();
+</script>
+
 <template>
   <section class="mt-32 py-16 pt-32 bg-muted">
     <div
@@ -12,11 +16,10 @@
         </h2>
       </div>
       <UButton
-        href="khateeb-resume.pdf"
-        target="_blank"
         icon="material-symbols:download-sharp"
-        download
         size="xl"
+        :loading="isGenerating"
+        @click="generateResume"
       >
         Download Resume
       </UButton>
