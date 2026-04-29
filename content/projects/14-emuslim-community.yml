@@ -1,0 +1,10 @@
+name: E-Muslim Community
+type: Web App
+year: 2025
+stack:
+  - TypeScript
+  - Vue
+  - Nuxt
+  - UnoCSS
+url: null
+screenshot: emuslim-community.png

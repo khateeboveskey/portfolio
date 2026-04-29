@@ -16,16 +16,29 @@
           :order="index + 1"
           :year="parseInt(exp.endDate.slice(-4)) || exp.endDate.toUpperCase()"
           :category="exp.category"
+          :to="`/experience/${stemToSlug(exp.stem)}`"
           class="w-full"
         />
       </li>
     </ul>
+    <div class="mt-8 flex justify-center">
+      <NuxtLink
+        to="/experience"
+        class="text-primary text-sm font-medium uppercase tracking-widest hover:underline"
+      >
+        Show all experience &rarr;
+      </NuxtLink>
+    </div>
   </section>
 </template>
 
 <script setup lang="ts">
 import ExperienceCard from '@/components/home/ProfessionalExpSection/ui/ExperienceCard.vue';
-const { data: professionalExperience } = await useAsyncData('experience', () =>
-  queryCollection('experience').order('endDate', 'DESC').all(),
+const { data: professionalExperience } = await useAsyncData(
+  'experience',
+  async () => {
+    const all = await queryCollection('experience').order('stem', 'DESC').all();
+    return featuredOrFallback(all);
+  },
 );
 </script>

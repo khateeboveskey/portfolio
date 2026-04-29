@@ -1,0 +1,8 @@
+name: Taraheeb Admin Panel
+type: Web App
+year: 2025
+stack:
+  - TypeScript
+  - Vue
+url: https://github.com/khateeboveskey/taraheeb-admin
+screenshot: taraheeb-admin.png

@@ -1,8 +1,0 @@
-name: Zameel Mobile App
-type: Mobile App
-year: 2024
-stack:
-  - React Native
-  - TypeScript
-githubRepo: https://github.com/khateeboveskey/zameel
-image: zameel.png

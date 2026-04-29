@@ -11,12 +11,21 @@
           :project="project"
         />
       </div>
+      <div class="mt-8 flex justify-center">
+        <NuxtLink
+          to="/projects"
+          class="text-primary text-sm font-medium uppercase tracking-widest hover:underline"
+        >
+          Show all projects &rarr;
+        </NuxtLink>
+      </div>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-const { data: projects } = await useAsyncData('projects:home', () =>
-  queryCollection('projects').order('year', 'DESC').all(),
-);
+const { data: projects } = await useAsyncData('projects:home', async () => {
+  const all = await queryCollection('projects').order('year', 'DESC').all();
+  return featuredOrFallback(all);
+});
 </script>

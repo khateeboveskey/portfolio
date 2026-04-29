@@ -8,10 +8,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      STUDIO_GITHUB_CLIENT_ID: ${{ secrets.STUDIO_GITHUB_CLIENT_ID }}
-      STUDIO_GITHUB_CLIENT_SECRET: ${{ secrets.STUDIO_GITHUB_CLIENT_SECRET }}
-      STUDIO_GITHUB_MODERATORS: ${{ secrets.STUDIO_GITHUB_MODERATORS }}
     steps:
       - uses: actions/checkout@v4
       - run: corepack enable

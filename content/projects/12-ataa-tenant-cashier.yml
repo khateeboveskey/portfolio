@@ -1,0 +1,11 @@
+name: Ataa Tenant Cashier
+type: Web App
+year: 2025
+stack:
+  - TypeScript
+  - Vue
+  - Nuxt
+  - TailwindCSS
+url: null
+screenshot: ataa-tenant-cashier.png
+featured: true

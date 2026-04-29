@@ -1,23 +1,18 @@
 <template>
-  <a
-    :href="props.project?.githubRepo ?? '/'"
-    class="group flex flex-col justify-between border-2 divide-y-2"
+  <NuxtLink
+    :to="`/projects/${stemToSlug(props.project?.stem)}`"
+    class="group flex flex-col"
   >
-    <div class="relative">
-      <NuxtImg
-        quality="50"
-        format="webp"
-        :src="`/imgs/projects-thumbnails/${props.project?.image}`"
-        :alt="props.project?.name"
-        class="w-full h-48 object-cover object-top"
-      />
-      <UIcon
-        name="lucide:square-arrow-out-up-right"
-        class="absolute top-2 right-2 w-6 h-6 invert mix-blend-difference"
+    <div class="relative overflow-hidden">
+      <HomeProjectsSectionUiProjectThumbnail
+        :name="props.project?.name"
+        :screenshot="props.project?.screenshot"
+        :logo="props.project?.logo"
+        :url="props.project?.url"
       />
     </div>
     <div
-      class="p-3 sm:p-4 md:p-5 flex flex-col gap-4 sm:gap-6 md:gap-8 group-hover:bg-inverted group-hover:text-inverted"
+      class="p-3 sm:p-4 md:p-5 flex flex-col gap-4 sm:gap-6 md:gap-8 group-hover:bg-inverted group-hover:text-inverted border-2 flex-1 justify-between border-default"
     >
       <div class="flex items-start justify-between">
         <h3 class="line-clamp-2 text-lg font-bold sm:text-xl md:text-2xl">
@@ -28,9 +23,7 @@
         </span>
       </div>
       <div class="flex flex-wrap items-center justify-between gap-2">
-        <div
-          class="text-primary text-inverted w-fit px-2 py-1 text-sm sm:text-base"
-        >
+        <div class="text-primary w-fit px-2 py-1 text-sm sm:text-base">
           {{ props.project?.type }}
         </div>
         <div class="flex flex-wrap gap-2">
@@ -43,7 +36,7 @@
         </div>
       </div>
     </div>
-  </a>
+  </NuxtLink>
 </template>
 
 <script setup lang="ts">

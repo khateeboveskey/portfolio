@@ -1,33 +1,60 @@
 soft:
-  - Teamwork
-  - Leadership and Influence
-  - Logical Thinking
-  - Problem Solving
-  - Creative Writing
-  - Decision Making
-  - Meeting and Public Speaking
-  - Time Management
-  - Technical Training
+  - Team Leadership
+  - Public Speaking
+  - Training & Mentorship
 
 hard:
+  - name: JavaScript
+    icon: logos:javascript
+    website: https://developer.mozilla.org/en-US/docs/Web/JavaScript
   - name: TypeScript
     icon: logos:typescript-icon
     website: https://www.typescriptlang.org/
+    featured: true
+  - name: PHP
+    icon: logos:php
+    website: https://www.php.net/
+  - name: Bootstrap
+    icon: logos:bootstrap
+    website: https://getbootstrap.com/
   - name: Tailwind CSS
     icon: logos:tailwindcss-icon
     website: http://tailwindcss.com/
+    featured: true
+  - name: Sass
+    icon: logos:sass
+    website: https://sass-lang.com/
   - name: Vue
     icon: logos:vue
     website: https://vuejs.org/
+    featured: true
   - name: Nuxt
     icon: logos:nuxt-icon
     website: https://nuxt.com/
-  - name: Pinia
-    icon: logos:pinia
-    website: https://pinia.vuejs.org/
-  - name: Vitest
-    icon: logos:vitest
-    website: https://vitest.dev/
+    featured: true
   - name: Laravel
     icon: logos:laravel
     website: https://laravel.com/
+  - name: React
+    icon: logos:react
+    website: https://react.dev/
+  - name: React Native
+    icon: logos:react
+    website: https://reactnative.dev/
+  - name: MySQL
+    icon: logos:mysql-icon
+    website: https://www.mysql.com/
+  - name: SQLite
+    icon: logos:sqlite
+    website: https://www.sqlite.org/
+  - name: Playwright
+    icon: logos:playwright
+    website: https://playwright.dev/
+    featured: true
+  - name: Vitest
+    icon: logos:vitest
+    website: https://vitest.dev/
+    featured: true
+  - name: Git
+    icon: logos:git-icon
+    website: https://git-scm.com/

@@ -1,0 +1,8 @@
+name: Mersal CRM API Client
+type: Web App
+year: 2024
+stack:
+  - Vue
+  - TailwindCSS
+url: https://github.com/khateeboveskey/mersal-crms
+screenshot: mersal-crms.png

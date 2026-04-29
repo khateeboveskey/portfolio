@@ -25,14 +25,6 @@ export default defineNuxtConfig({
   ui: {
     colorMode: false,
   },
-  studio: {
-    repository: {
-      provider: 'github',
-      owner: 'khateeboveskey',
-      repo: 'portfolio',
-      branch: 'main',
-    },
-  },
   nitro: {
     prerender: {
       // Pre-render the homepage
@@ -52,6 +44,5 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     'nuxt-marquee',
     '@nuxt/content',
-    'nuxt-studio',
   ],
 });

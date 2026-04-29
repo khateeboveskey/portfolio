@@ -1,0 +1,11 @@
+name: Salam Chat
+type: Web App
+year: 2025
+stack:
+  - TypeScript
+  - Vue
+  - Nuxt
+  - UnoCSS
+url: null
+screenshot: salam-chat.png
+featured: true

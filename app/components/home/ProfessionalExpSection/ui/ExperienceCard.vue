@@ -1,7 +1,9 @@
 <template>
-  <a
-    :href="props.companyUrl"
-    target="_blank"
+  <component
+    :is="props.to ? 'NuxtLink' : 'a'"
+    :to="props.to"
+    :href="props.to ? undefined : props.companyUrl"
+    :target="props.to ? undefined : '_blank'"
     class="hover:bg-inverted hover:text-inverted group flex flex-col items-start justify-between gap-4 border-2 p-4 py-6 sm:flex-row sm:items-center sm:gap-0 sm:px-6 sm:py-8 md:px-8 md:py-10 lg:px-10 lg:py-12"
   >
     <span class="flex flex-row gap-3 sm:gap-4 md:gap-5">
@@ -26,7 +28,7 @@
       <span class="tracking-wider uppercase">{{ props.category }}</span>
       <span class="text-primary">{{ props.year }}</span>
     </span>
-  </a>
+  </component>
 </template>
 
 <script setup lang="ts">
@@ -37,6 +39,7 @@ interface ExperienceCardProps {
   companyUrl?: string;
   year: string | number;
   order: number;
+  to?: string;
 }
 
 const props = defineProps<ExperienceCardProps>();

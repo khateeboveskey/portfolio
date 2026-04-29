@@ -1,0 +1,11 @@
+name: Ataa Tenant Store
+type: Web App
+year: 2025
+stack:
+  - TypeScript
+  - Vue
+  - Vite
+  - TailwindCSS
+url: null
+screenshot: ataa-tenant-store.png
+featured: true

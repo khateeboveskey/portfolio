@@ -1,9 +1,9 @@
 name: Khateeb's Portfolio
 type: Website
-year: 2024
+year: 2025
 stack:
   - Vue
   - TypeScript
   - TailwindCSS
-githubRepo: https://github.com/khateeboveskey/khateeboveskey.github.io
-image: khateeboveskey.github.io.png
+url: https://github.com/khateeboveskey/khateeboveskey.github.io
+screenshot: khateeboveskey.github.io.png
