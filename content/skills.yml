@@ -28,6 +28,10 @@ hard:
     icon: logos:vue
     website: https://vuejs.org/
     featured: true
+  - name: Pinia
+    icon: logos:pinia
+    website: https://pinia.vuejs.org/
+    featured: true
   - name: Nuxt
     icon: logos:nuxt-icon
     website: https://nuxt.com/
