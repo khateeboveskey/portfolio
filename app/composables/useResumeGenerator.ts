@@ -110,7 +110,7 @@ function drawSectionTitle(ctx: PdfContext, title: string): void {
   ctx.doc.setDrawColor(60, 60, 60);
   ctx.doc.setLineWidth(0.4);
   ctx.doc.line(MARGIN_LEFT, ctx.y, PAGE_WIDTH - MARGIN_RIGHT, ctx.y);
-  ctx.y += 4;
+  ctx.y += 6;
 }
 
 function drawText(
@@ -384,7 +384,7 @@ function renderCertifications(
 ): void {
   drawSectionTitle(ctx, 'Certifications');
   for (const cert of certifications) {
-    drawInlineLeftRight(ctx, cert.title, String(cert.year), { bold: false });
+    drawInlineLeftRight(ctx, cert.title, String(cert.year), { bold: true });
     drawText(ctx, cert.organization, {
       italic: true,
       fontSize: FONT_SIZE_SMALL,
@@ -400,8 +400,8 @@ function renderReferences(
   drawSectionTitle(ctx, 'References');
   for (const ref of references) {
     const contacts = ref.contacts || (ref.contact ? [ref.contact] : []);
-    const contactStr = contacts.length > 0 ? `    ${contacts.join(' - ')}` : '';
-    drawText(ctx, `${ref.name}${contactStr}`, { bold: true });
+    const contactStr = contacts.join(' - ');
+    drawInlineLeftRight(ctx, ref.name, contactStr, { bold: true });
     drawBullet(ctx, `${ref.degree} - ${ref.location}`);
     drawBullet(ctx, ref.position);
     ctx.y += ITEM_GAP;
