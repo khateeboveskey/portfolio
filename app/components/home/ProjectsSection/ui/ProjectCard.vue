@@ -1,7 +1,6 @@
 <template>
-  <a
-    :href="props.project?.url ?? '/'"
-    target="_blank"
+  <NuxtLink
+    :to="`/projects/${stemToSlug(props.project?.stem)}`"
     class="group flex flex-col"
   >
     <div class="relative overflow-hidden">
@@ -37,7 +36,7 @@
         </div>
       </div>
     </div>
-  </a>
+  </NuxtLink>
 </template>
 
 <script setup lang="ts">

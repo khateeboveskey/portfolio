@@ -3,9 +3,8 @@
     <UiSectionHeader subtitle="What I've Written">Articles</UiSectionHeader>
     <ul class="space-y-4 md:space-y-6 lg:space-y-10">
       <li v-for="(article, index) in articles" :key="index">
-        <a
-          :href="article.url"
-          target="_blank"
+        <NuxtLink
+          :to="`/blog/${stemToSlug(article.stem)}`"
           class="hover:bg-inverted hover:text-inverted group flex min-h-[12rem] flex-col items-start justify-between border-2 p-4 md:h-48 md:flex-row md:items-center md:gap-10 md:px-6 md:py-6 lg:px-10 lg:py-9"
         >
           <div class="mb-4 flex-1 space-y-2 md:mb-0 md:space-y-3">
@@ -58,9 +57,17 @@
               </svg>
             </div>
           </div>
-        </a>
+        </NuxtLink>
       </li>
     </ul>
+    <div class="mt-8 flex justify-center">
+      <NuxtLink
+        to="/blog"
+        class="text-primary text-sm font-medium uppercase tracking-widest hover:underline"
+      >
+        Show all articles &rarr;
+      </NuxtLink>
+    </div>
   </section>
 </template>
 

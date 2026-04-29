@@ -43,6 +43,8 @@ export default defineContentConfig({
             icon: z.string(),
             website: z.string(),
             featured: z.boolean().optional(),
+            description: z.string().optional(),
+            body: z.string().optional(),
           }),
         ),
       }),
@@ -59,6 +61,8 @@ export default defineContentConfig({
         website: z.string().optional(),
         achievements: z.array(z.string()),
         featured: z.boolean().optional(),
+        description: z.string().optional(),
+        body: z.string().optional(),
       }),
     }),
     projects: defineCollection({
@@ -73,6 +77,8 @@ export default defineContentConfig({
         screenshot: z.string(),
         logo: z.string().optional(),
         featured: z.boolean().optional(),
+        description: z.string().optional(),
+        body: z.string().optional(),
       }),
     }),
     articles: defineCollection({
@@ -87,6 +93,7 @@ export default defineContentConfig({
         url: z.string(),
         urlTo: z.string(),
         featured: z.boolean().optional(),
+        body: z.string().optional(),
       }),
     }),
     education: defineCollection({

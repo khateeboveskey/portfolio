@@ -16,10 +16,19 @@
           :order="index + 1"
           :year="parseInt(exp.endDate.slice(-4)) || exp.endDate.toUpperCase()"
           :category="exp.category"
+          :to="`/experience/${stemToSlug(exp.stem)}`"
           class="w-full"
         />
       </li>
     </ul>
+    <div class="mt-8 flex justify-center">
+      <NuxtLink
+        to="/experience"
+        class="text-primary text-sm font-medium uppercase tracking-widest hover:underline"
+      >
+        Show all experience &rarr;
+      </NuxtLink>
+    </div>
   </section>
 </template>
 
