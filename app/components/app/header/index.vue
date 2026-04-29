@@ -1,17 +1,23 @@
 <template>
   <header
-    class="bg-default sticky top-0 z-40 flex flex-row items-center justify-between px-4 py-4 md:px-32 md:py-8"
+    class="bg-default sticky top-0 z-40 flex flex-row items-center justify-between px-4 py-4 pr-16 md:px-32 md:py-8"
   >
     <AppLogo with-name />
 
     <!-- Hamburger Button (hidden while drawer is open; drawer has its own close) -->
     <button
-      v-show="!isMenuOpen"
+      v-if="!isMenuOpen"
       :aria-expanded="isMenuOpen"
       aria-label="Open navigation menu"
       aria-controls="mobile-nav"
       type="button"
-      class="focus-visible:outline-primary relative z-50 flex h-10 w-10 items-center justify-center rounded-md transition-colors hover:bg-black/5 focus-visible:outline-2 focus-visible:outline-offset-2 md:hidden"
+      class="focus-visible:outline-primary absolute z-50 flex h-10 w-10 items-center justify-center rounded-md transition-colors hover:bg-black/5 focus-visible:outline-2 focus-visible:outline-offset-2 md:hidden"
+      style="
+        position: absolute;
+        top: 50%;
+        right: 1rem;
+        transform: translateY(-50%);
+      "
       @click="toggleMenu"
     >
       <svg
