@@ -1,8 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(npm install *)",
-      "Bash(bunx --bun vue-tsc --noEmit)"
-    ]
-  }
-}
