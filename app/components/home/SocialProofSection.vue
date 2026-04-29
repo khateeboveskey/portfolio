@@ -4,12 +4,12 @@
       Social Proof
     </UiSectionHeader>
     <div
-      class="flex flex-column md:flex-row gap-4 sm:gap-6 lg:gap-8 mt-8 justify-center"
+      class="flex flex-col md:flex-row gap-4 sm:gap-6 lg:gap-8 mt-8 justify-center items-center md:items-stretch"
     >
       <div
         v-for="(reference, index) in socialProof"
         :key="index"
-        class="flex flex-col w-4/5 md:w-1/2 lg:w-1/3"
+        class="flex flex-col w-full sm:w-4/5 md:w-1/2 lg:w-1/3"
       >
         <div class="text-primary p-4 sm:p-5 bg-primary">
           <h4 class="text-xl sm:text-2xl font-bold text-white mb-2 text-center">
