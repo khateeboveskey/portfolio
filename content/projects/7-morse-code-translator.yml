@@ -3,5 +3,5 @@ type: Desktop App
 year: 2023
 stack:
   - CSharp
-githubRepo: https://github.com/khateeboveskey/winform-morse-code-translator
+url: https://github.com/khateeboveskey/winform-morse-code-translator
 screenshot: winform-morse-code-translator.png

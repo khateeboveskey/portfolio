@@ -1,0 +1,10 @@
+name: Ataa Tenant Admin
+type: Web App
+year: 2025
+stack:
+  - TypeScript
+  - Vue
+  - Vite
+  - TailwindCSS
+url: null
+screenshot: ataa-tenant-admin.png

@@ -1,11 +1,15 @@
 <template>
-  <a :href="props.project?.githubRepo ?? '/'" target="_blank" class="group flex flex-col">
+  <a
+    :href="props.project?.url ?? '/'"
+    target="_blank"
+    class="group flex flex-col"
+  >
     <div class="relative overflow-hidden">
       <HomeProjectsSectionUiProjectThumbnail
         :name="props.project?.name"
         :screenshot="props.project?.screenshot"
         :logo="props.project?.logo"
-        :url="props.project?.githubRepo"
+        :url="props.project?.url"
       />
     </div>
     <div

@@ -1,0 +1,9 @@
+name: Rokn Al-Hewar Official Website
+type: Website
+year: 2025
+stack:
+  - Vue
+  - Nuxt
+  - TailwindCSS
+url: null
+screenshot: rokn-al-hewar-official-website.png

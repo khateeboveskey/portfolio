@@ -69,7 +69,7 @@ export default defineContentConfig({
         type: z.string(),
         year: z.number(),
         stack: z.array(z.string()),
-        githubRepo: z.string().nullable(),
+        url: z.string().nullable(),
         screenshot: z.string(),
         logo: z.string().optional(),
         featured: z.boolean().optional(),

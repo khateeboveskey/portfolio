@@ -1,0 +1,10 @@
+name: Ataa SaaS Platform
+type: Web App
+year: 2025
+stack:
+  - TypeScript
+  - Vue
+  - Nuxt
+  - TailwindCSS
+url: https://saas.ataa.com.sa/
+screenshot: ataa-saas.png

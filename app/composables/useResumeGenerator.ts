@@ -320,8 +320,8 @@ function renderProjects(
     drawInlineLeftRight(ctx, proj.name, String(proj.year), { bold: true });
     drawText(ctx, proj.type, { italic: true, fontSize: FONT_SIZE_SMALL });
 
-    if (proj.githubRepo) {
-      drawBullet(ctx, `Repo: ${proj.githubRepo.replace('https://', '')}`);
+    if (proj.url) {
+      drawBullet(ctx, `URL: ${proj.url.replace('https://', '')}`);
     }
     drawBullet(ctx, `Tech Stack: ${proj.stack.join(', ')}`);
     ctx.y += ITEM_GAP;
