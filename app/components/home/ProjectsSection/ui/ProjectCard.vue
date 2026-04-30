@@ -27,11 +27,11 @@
           {{ props.project?.type }}
         </div>
         <div class="flex flex-wrap gap-2">
-          <i
+          <UIcon
             v-for="(skill, index) in props.project?.stack"
             :key="index"
-            :class="getDevIcon(skill)"
-            class="text-default group-hover:text-inverted text-xl sm:text-2xl"
+            :name="getSkillIcon(skill)"
+            class="text-default group-hover:text-inverted size-5 sm:size-6"
           />
         </div>
       </div>
@@ -51,10 +51,10 @@ const props = defineProps({
   },
 });
 
-function getDevIcon(name: string): string {
+function getSkillIcon(name: string): string {
   return (
-    skills.value?.hard.find((skill) => skill.name === name)?.deviconClass ??
-    `devicon-${name.toLowerCase()}-plain`
+    skills.value?.hard.find((skill) => skill.name === name)?.icon ??
+    `simple-icons:${name.toLowerCase().replace(/[^a-z0-9]/g, '')}`
   );
 }
 </script>
