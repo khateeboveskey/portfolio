@@ -48,5 +48,44 @@ const { data: item } = await useAsyncData(
   },
 );
 
-useHead({ title: () => item.value?.position ?? 'Experience' });
+const pagePath = computed(() => `/experience/${slug.value}`);
+
+const title = computed(() =>
+  item.value ? `${item.value.position} — ${item.value.company}` : 'Experience',
+);
+const description = computed(() => {
+  if (!item.value)
+    return 'Professional experience entry by A.Rahman Al-Khateeb.';
+  if (item.value.description?.trim()) return item.value.description;
+  const head = `${item.value.position} at ${item.value.company} (${item.value.startDate} – ${item.value.endDate}) — ${item.value.category}.`;
+  const first = item.value.achievements?.[0];
+  return first ? `${head} ${first}` : head;
+});
+
+useSeoMeta({
+  title,
+  ogTitle: title,
+  description,
+  ogDescription: description,
+  ogType: 'profile',
+  ogUrl: pagePath,
+  twitterTitle: title,
+  twitterDescription: description,
+});
+
+defineOgImage('Page', {
+  title: () => item.value?.position ?? 'Experience',
+  subtitle: () =>
+    item.value
+      ? `${item.value.company} · ${item.value.startDate} – ${item.value.endDate}`
+      : 'Experience',
+  badge: () => item.value?.category ?? 'Experience',
+});
+
+useSchemaOrg([
+  defineWebPage({
+    name: title,
+    description,
+  }),
+]);
 </script>

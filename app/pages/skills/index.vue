@@ -46,5 +46,40 @@ const { data } = await useAsyncData('skills', () =>
   queryCollection('skills').first(),
 );
 
-useHead({ title: 'Skills' });
+const title = 'Skills';
+const description =
+  'Hard and soft skills of A.Rahman Al-Khateeb — Vue, Nuxt, TypeScript, Laravel, Tailwind, Pinia, and more, plus communication, teaching, and team collaboration.';
+
+useSeoMeta({
+  title,
+  ogTitle: 'Skills — Khateeb',
+  description,
+  ogDescription: description,
+  ogType: 'profile',
+  ogUrl: '/skills',
+  twitterTitle: 'Skills — Khateeb',
+  twitterDescription: description,
+});
+
+defineOgImage('Page', {
+  title: 'Skills',
+  subtitle: 'Tools, technologies & traits',
+  badge: 'Profile',
+});
+
+useSchemaOrg([
+  defineWebPage({
+    name: 'Skills',
+    description,
+  }),
+  defineItemList({
+    itemListElement:
+      data.value?.hard?.map((s, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        url: `/skills/${slugify(s.name)}`,
+        name: s.name,
+      })) ?? [],
+  }),
+]);
 </script>

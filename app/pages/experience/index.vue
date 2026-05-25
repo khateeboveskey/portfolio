@@ -24,9 +24,44 @@
 </template>
 
 <script setup lang="ts">
-useHead({ title: 'Experience' });
-
 const { data: items } = await useAsyncData('experience-list', () =>
   queryCollection('experience').all(),
 );
+
+const title = 'Experience';
+const description =
+  "A.Rahman Al-Khateeb's professional experience — frontend, full-stack, and training roles across SaaS, charity tech, and educational organizations.";
+
+useSeoMeta({
+  title,
+  ogTitle: 'Experience — Khateeb',
+  description,
+  ogDescription: description,
+  ogType: 'profile',
+  ogUrl: '/experience',
+  twitterTitle: 'Experience — Khateeb',
+  twitterDescription: description,
+});
+
+defineOgImage('Page', {
+  title: 'Experience',
+  subtitle: 'Frontend, full-stack & training roles',
+  badge: 'Career',
+});
+
+useSchemaOrg([
+  defineWebPage({
+    name: 'Experience',
+    description,
+  }),
+  defineItemList({
+    itemListElement:
+      items.value?.map((item, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        url: `/experience/${stemToSlug(item.stem)}`,
+        name: `${item.position} — ${item.company}`,
+      })) ?? [],
+  }),
+]);
 </script>

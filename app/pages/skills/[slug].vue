@@ -46,7 +46,36 @@ const skill = computed(() =>
   data.value?.hard?.find((s) => slugify(s.name) === slug.value),
 );
 
-useHead(() => ({
-  title: skill.value?.name ?? 'Skill',
-}));
+const pagePath = computed(() => `/skills/${slug.value}`);
+
+const title = computed(() => skill.value?.name ?? 'Skill');
+const description = computed(() => {
+  if (!skill.value) return 'Skill in the portfolio of A.Rahman Al-Khateeb.';
+  if (skill.value.description?.trim()) return skill.value.description;
+  return `${skill.value.name} — one of the tools and technologies used by A.Rahman Al-Khateeb across web and full-stack projects.`;
+});
+
+useSeoMeta({
+  title,
+  ogTitle: title,
+  description,
+  ogDescription: description,
+  ogType: 'profile',
+  ogUrl: pagePath,
+  twitterTitle: title,
+  twitterDescription: description,
+});
+
+defineOgImage('Page', {
+  title: () => skill.value?.name ?? 'Skill',
+  subtitle: 'Skill in the Khateeb stack',
+  badge: 'Skill',
+});
+
+useSchemaOrg([
+  defineWebPage({
+    name: title,
+    description,
+  }),
+]);
 </script>

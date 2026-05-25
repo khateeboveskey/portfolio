@@ -60,5 +60,54 @@ const { data: item } = await useAsyncData(
   },
 );
 
-useHead({ title: () => item.value?.name ?? 'Project' });
+const pagePath = computed(() => `/projects/${slug.value}`);
+
+const title = computed(() => item.value?.name ?? 'Project');
+const description = computed(() => {
+  if (!item.value) return 'Project by A.Rahman Al-Khateeb.';
+  const base = item.value.description?.trim();
+  if (base) return base;
+  return `${item.value.name} — ${item.value.type} (${item.value.year}). Built with ${item.value.stack.join(', ')}.`;
+});
+
+const screenshotUrl = computed(() =>
+  item.value?.screenshot
+    ? `/imgs/projects-screenshots/${item.value.screenshot}`
+    : undefined,
+);
+
+useSeoMeta({
+  title,
+  ogTitle: title,
+  description,
+  ogDescription: description,
+  ogType: 'article',
+  ogUrl: pagePath,
+  ogImage: screenshotUrl,
+  twitterTitle: title,
+  twitterDescription: description,
+  twitterImage: screenshotUrl,
+});
+
+defineOgImage('Page', {
+  title: () => item.value?.name ?? 'Project',
+  subtitle: () =>
+    item.value
+      ? `${item.value.type} · ${item.value.year} · ${item.value.stack.slice(0, 4).join(' · ')}`
+      : 'Project',
+  badge: 'Project',
+});
+
+useSchemaOrg([
+  {
+    '@type': 'CreativeWork',
+    name: () => item.value?.name,
+    description: () => item.value?.description,
+    image: screenshotUrl,
+    url: () => item.value?.url ?? pagePath.value,
+    keywords: () => item.value?.stack.join(', '),
+    dateCreated: () => item.value?.year?.toString(),
+    author: { '@type': 'Person', name: 'A.Rahman S. Al-Khateeb' },
+  },
+]);
 </script>

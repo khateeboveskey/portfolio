@@ -1,25 +1,12 @@
 <template>
-  <div>
+  <div class="font-app flex flex-col min-h-screen">
     <AppHeader />
-    <slot />
+
+    <!-- Allow the main content area to grow and fill available space -->
+    <main data-testid="default-layout-main" class="flex-1">
+      <slot />
+    </main>
+
     <AppFooter />
   </div>
 </template>
-
-<script setup lang="ts">
-useHead({
-  meta: [
-    { name: 'author', content: 'Abdulrahman Al-Khateeb' },
-    {
-      name: 'description',
-      content: 'Crafting digital experiences with passion and precision.',
-    },
-    {
-      name: 'keywords',
-      content:
-        'web development, software engineering, portfolio, projects, Abdulrahman Al-Khateeb',
-    },
-  ],
-  titleTemplate: '%s | Khateeb',
-});
-</script>

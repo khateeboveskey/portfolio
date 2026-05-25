@@ -47,7 +47,42 @@ const item = computed(() =>
   items.value?.find((a) => stemToSlug(a.stem) === slug.value),
 );
 
-useHead(() => ({
-  title: item.value?.title ?? 'Article',
-}));
+const pagePath = computed(() => `/blog/${slug.value}`);
+
+const title = computed(() => item.value?.title ?? 'Article');
+const description = computed(
+  () =>
+    item.value?.description ??
+    'Article on the Khateeb Portfolio blog — UX, software design, and engineering.',
+);
+
+useSeoMeta({
+  title,
+  ogTitle: title,
+  description,
+  ogDescription: description,
+  ogType: 'article',
+  ogUrl: pagePath,
+  twitterTitle: title,
+  twitterDescription: description,
+  articlePublishedTime: () => item.value?.datePublished,
+  articleAuthor: ['A.Rahman S. Al-Khateeb'],
+  articleSection: () => item.value?.category,
+});
+
+defineOgImage('Page', {
+  title: () => item.value?.title ?? 'Article',
+  subtitle: () => item.value?.category ?? 'Article',
+  badge: 'Blog',
+});
+
+useSchemaOrg([
+  defineArticle({
+    headline: () => item.value?.title,
+    description: () => item.value?.description,
+    datePublished: () => item.value?.datePublished,
+    articleSection: () => item.value?.category,
+    inLanguage: 'en-US',
+  }),
+]);
 </script>
