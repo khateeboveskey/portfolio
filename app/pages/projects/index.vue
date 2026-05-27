@@ -13,7 +13,7 @@
           v-if="item.screenshot"
           :src="`/imgs/projects-screenshots/${item.screenshot}`"
           :alt="item.name"
-          class="w-full aspect-video object-cover border border-default"
+          class="w-full aspect-video object-cover object-top border border-default"
           loading="lazy"
         />
         <h2 class="text-xl font-semibold mt-2">{{ item.name }}</h2>
@@ -31,7 +31,7 @@ const { data: items } = await useAsyncData('projects-list', () =>
 
 const title = 'Projects';
 const description =
-  "Selected projects by A.Rahman Al-Khateeb — multi-tenant SaaS dashboards, e-commerce, charity platforms, mobile admin apps, CRMs, and tooling. Built with Vue, Nuxt, TypeScript, Laravel, and TailwindCSS.";
+  'Selected projects by A.Rahman Al-Khateeb — multi-tenant SaaS dashboards, e-commerce, charity platforms, mobile admin apps, CRMs, and tooling. Built with Vue, Nuxt, TypeScript, Laravel, and TailwindCSS.';
 
 useSeoMeta({
   title,
