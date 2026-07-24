@@ -24,8 +24,8 @@
 </template>
 
 <script setup lang="ts">
-const { data: items } = await useAsyncData('experience-list', () =>
-  queryCollection('experience').all(),
+const { data: items } = await useAsyncData('experience-list', async () =>
+  sortExperienceByEndDate(await queryCollection('experience').all()),
 );
 
 const title = 'Experience';

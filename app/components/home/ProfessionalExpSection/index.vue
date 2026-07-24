@@ -37,8 +37,8 @@ import ExperienceCard from '@/components/home/ProfessionalExpSection/ui/Experien
 const { data: professionalExperience } = await useAsyncData(
   'experience',
   async () => {
-    const all = await queryCollection('experience').order('stem', 'DESC').all();
-    return featuredOrFallback(all);
+    const all = await queryCollection('experience').all();
+    return sortExperienceByEndDate(featuredOrFallback(all));
   },
 );
 </script>

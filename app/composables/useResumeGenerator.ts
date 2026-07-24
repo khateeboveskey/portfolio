@@ -460,8 +460,8 @@ export function useResumeGenerator() {
         throw new Error('Required resume data is missing');
       }
 
-      // Sort experience: most recent first (by file name prefix which encodes order)
-      const sortedExperience = [...(experience || [])].reverse();
+      // Sort experience: by endDate descending, ongoing roles (present) on top
+      const sortedExperience = sortExperienceByEndDate(experience || []);
       // Sort education: by startYear descending
       const sortedEducation = [...(education || [])].sort(
         (a, b) => b.startYear - a.startYear,
