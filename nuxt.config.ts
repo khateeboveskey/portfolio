@@ -48,6 +48,9 @@ export default defineNuxtConfig({
       routes: ['/', '/sitemap.xml', '/robots.txt'],
       crawlLinks: true,
       autoSubfolderIndex: false,
+      // Cap parallelism so each satori OG-image render gets enough CPU to
+      // finish well under the render timeout instead of starving under load.
+      concurrency: 3,
     },
   },
 
@@ -81,11 +84,14 @@ export default defineNuxtConfig({
   ogImage: {
     defaults: {
       cacheMaxAgeSeconds: 60 * 60 * 24 * 7,
-      component: 'Default',
       width: 1200,
       height: 630,
     },
-    fonts: ['Inter:400', 'Inter:700'],
+    // Default is 15s; satori renders can exceed it during a full prerender
+    // sweep and 408, failing the build. Give them headroom.
+    security: {
+      renderTimeout: 60_000,
+    },
   },
 
   schemaOrg: {
