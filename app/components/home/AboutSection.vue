@@ -35,7 +35,9 @@ const { data: info } = await useAsyncData('personalInfo:about', () =>
   queryCollection('personalInfo').first(),
 );
 
-const objective = computed(() => info.value?.objective ?? '');
+const { withYears } = await useExperienceYears();
+
+const objective = computed(() => withYears(info.value?.objective ?? ''));
 const fullnameWords = computed(
   () => info.value?.personalInfo?.name.split(' ') ?? [],
 );

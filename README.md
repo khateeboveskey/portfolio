@@ -1,6 +1,6 @@
 # Khateeb's Portfolio
 
-Personal portfolio website for **A.Rahman S. Al-Khateeb (Khateeb)** — Full-stack Developer & Technical Trainer.
+Personal portfolio website for **A.Rahman S. Al-Khateeb (Khateeb)** — Frontend Developer & Technical Trainer.
 
 **Live site:** [khateeb.me](https://khateeb.me)
 

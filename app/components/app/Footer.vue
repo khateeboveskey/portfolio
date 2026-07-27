@@ -48,7 +48,9 @@ const { data: info } = await useAsyncData('personalInfo:footer', () =>
   queryCollection('personalInfo').first(),
 );
 
-const objective = computed(() => info.value?.objective ?? '');
+const { withYears } = await useExperienceYears();
+
+const objective = computed(() => withYears(info.value?.objective ?? ''));
 const accounts = computed(() => info.value?.accounts ?? {});
 
 useHead({
