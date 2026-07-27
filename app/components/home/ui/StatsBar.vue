@@ -16,6 +16,7 @@
           }"
           class="mb-3 text-2xl font-bold sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl"
           prefix="+"
+          :format="{ maximumFractionDigits: 1 }"
           :value="visible[index] ? Number(si.content) : 0"
         />
         <template #fallback>
@@ -42,15 +43,7 @@ const { data: projects } = await useAsyncData('projects:stats', () =>
   queryCollection('projects').order('year', 'DESC').all(),
 );
 
-const experienceYears = computed(() => {
-  if (!projects.value || projects.value.length === 0) return 0;
-  // Assuming ordered by path, which corresponds to original ID order
-  return (
-    new Date().getFullYear() -
-    (projects.value[projects.value.length - 1]?.year ??
-      new Date().getFullYear())
-  );
-});
+const { years: experienceYears } = await useExperienceYears();
 
 const snapInfoGroup = computed(() => [
   {

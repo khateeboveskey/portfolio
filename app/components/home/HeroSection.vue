@@ -6,7 +6,7 @@
       <h1
         class="m-4 mb-4 text-3xl font-bold sm:m-0 sm:mb-6 sm:text-4xl md:text-4xl lg:text-5xl"
       >
-        Hi, I'm Khateeb. A Full-stack Developer
+        Hi, I'm Khateeb. A Frontend Developer
         <AppLogo
           class="inline-block h-5 -translate-y-1 sm:h-6 md:h-8 lg:h-10"
         />

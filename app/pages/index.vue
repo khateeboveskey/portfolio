@@ -14,9 +14,13 @@
 </template>
 
 <script setup lang="ts">
-const title = "Khateeb's Portfolio — Full-stack Developer & Technical Trainer";
-const description =
-  'A.Rahman S. Al-Khateeb (Khateeb) — Full-stack Developer & Technical Trainer with 3+ years of experience. Vue, Nuxt, TypeScript, Laravel. Browse projects, articles, skills, and experience.';
+const { yearsLabel } = await useExperienceYears();
+
+const title = "Khateeb's Portfolio — Frontend Developer & Technical Trainer";
+const description = computed(
+  () =>
+    `A.Rahman S. Al-Khateeb (Khateeb) — Frontend Developer & Technical Trainer with ${yearsLabel.value}+ years of experience. Vue, Nuxt, TypeScript, Laravel. Browse projects, articles, skills, and experience.`,
+);
 
 useSeoMeta({
   title,
@@ -31,19 +35,19 @@ useSeoMeta({
 
 defineOgImage('Page', {
   title: 'A.Rahman S. Al-Khateeb',
-  subtitle: 'Full-stack Developer & Technical Trainer',
+  subtitle: 'Frontend Developer & Technical Trainer',
   badge: 'Portfolio',
 });
 
 useSchemaOrg([
   defineWebSite({
     name: "Khateeb's Portfolio",
-    description,
+    description: description.value,
     inLanguage: 'en-US',
   }),
   defineWebPage({
     name: title,
-    description,
+    description: description.value,
     primaryImageOfPage: '/imgs/me.png',
   }),
 ]);

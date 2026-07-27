@@ -30,6 +30,61 @@ export function parseExperienceDate(value: string | undefined): number {
   return Date.UTC(year, month - 1, day);
 }
 
+/**
+ * Stem of the experience entry that anchors the "years of experience" counter.
+ * Everything user-facing (stats bar, objective text, SEO copy) counts from this
+ * role's `startDate`.
+ */
+export const EXPERIENCE_ANCHOR_STEM = 'experience/6-frontend-developer';
+
+/** Placeholder replaced with the live years-of-experience number in content. */
+const EXPERIENCE_YEARS_TOKEN = /\{\{\s*years\s*\}\}/g;
+
+/**
+ * Whole months elapsed between two dates, ignoring the time of day.
+ */
+function monthsElapsed(from: Date, to: Date): number {
+  const months =
+    (to.getUTCFullYear() - from.getUTCFullYear()) * 12 +
+    (to.getUTCMonth() - from.getUTCMonth());
+
+  // Not a full month yet if we haven't reached the anniversary day.
+  return to.getUTCDate() < from.getUTCDate() ? months - 1 : months;
+}
+
+/**
+ * Years of experience since `startDate`, floored to the nearest half year, so
+ * the number only moves every six months: 0, 0.5, 1, 1.5, 2, 2.5, …
+ *
+ * `startDate` accepts the same formats as {@link parseExperienceDate}.
+ */
+export function yearsOfExperienceSince(
+  startDate: string | undefined,
+  now: number | Date = Date.now(),
+): number {
+  const startMs = parseExperienceDate(startDate);
+  if (!Number.isFinite(startMs) || startMs <= 0) return 0;
+
+  const months = monthsElapsed(new Date(startMs), new Date(now));
+  if (months <= 0) return 0;
+
+  return Math.floor(months / 6) / 2;
+}
+
+/**
+ * Render a half-year count for display: `1`, `1.5`, `2`, …
+ */
+export function formatExperienceYears(years: number): string {
+  return Number.isInteger(years) ? String(years) : years.toFixed(1);
+}
+
+/**
+ * Replace the `{{years}}` placeholder in content copy with the live count.
+ */
+export function fillExperienceYears(text: string, years: number): string {
+  return text.replace(EXPERIENCE_YEARS_TOKEN, formatExperienceYears(years));
+}
+
 interface SortableExperience {
   startDate: string;
   endDate: string;

@@ -55,6 +55,8 @@ interface InlineLeftRightOptions {
 
 interface ResumeData {
   personalInfo: PersonalInfoCollectionItem;
+  /** Live years-of-experience count used to fill `{{years}}` in copy. */
+  experienceYears: number;
   skills: SkillsCollectionItem;
   experience: ExperienceCollectionItem[];
   education: EducationCollectionItem[];
@@ -232,9 +234,10 @@ function renderHeader(
 function renderObjective(
   ctx: PdfContext,
   personalInfo: PersonalInfoCollectionItem,
+  experienceYears: number,
 ): void {
   drawSectionTitle(ctx, 'Objective');
-  drawText(ctx, personalInfo.objective);
+  drawText(ctx, fillExperienceYears(personalInfo.objective, experienceYears));
 }
 
 function renderEducation(
@@ -410,7 +413,8 @@ function renderReferences(
 
 // Section key -> renderer mapping
 const sectionRenderers: Record<SectionKey, SectionRenderer> = {
-  objective: (ctx, data) => renderObjective(ctx, data.personalInfo),
+  objective: (ctx, data) =>
+    renderObjective(ctx, data.personalInfo, data.experienceYears),
   education: (ctx, data) => renderEducation(ctx, data.education),
   experience: (ctx, data) => renderExperience(ctx, data.experience),
   skills: (ctx, data) => renderSkills(ctx, data.skills),
@@ -483,8 +487,15 @@ export function useResumeGenerator() {
         (a, b) => b.year - a.year,
       );
 
+      // Years of experience counted from the anchor role's start date
+      const experienceYears = yearsOfExperienceSince(
+        (experience || []).find((exp) => exp.stem === EXPERIENCE_ANCHOR_STEM)
+          ?.startDate,
+      );
+
       const data: ResumeData = {
         personalInfo,
+        experienceYears,
         skills,
         experience: sortedExperience,
         education: sortedEducation,

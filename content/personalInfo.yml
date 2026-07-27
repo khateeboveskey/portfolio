@@ -1,13 +1,13 @@
 isAvailableToWork: true
 objective: >-
-  Passionate Full-Stack Developer and Technical Trainer with 3 + years of
+  Passionate Frontend Developer and Technical Trainer with {{years}}+ years of
   experience in web development and software project management. Seeking a
   challenging role where I can build scalable applications, enhance user
   experiences, and contribute to innovative projects while leveraging my
   expertise in software development and training.
 personalInfo:
   name: A.Rahman S. Al-Khateeb
-  occupation: Full-stack Developer
+  occupation: Frontend Developer
   dateOfBirth: 2003-7-3
   address: Yemen, Aden, Al-Mansoura
   maritalStatus: Engaged
