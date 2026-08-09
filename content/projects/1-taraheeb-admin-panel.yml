@@ -4,5 +4,9 @@ year: 2025
 stack:
   - TypeScript
   - Vue
+description: >-
+  Arabic RTL admin dashboard for a travel management system, built around
+  reusable CrudView and AutoForm generator components that cut repetitive
+  table and form code by 60-70%.
 url: https://github.com/khateeboveskey/taraheeb-admin
 screenshot: taraheeb-admin.png

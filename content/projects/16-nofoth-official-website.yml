@@ -5,6 +5,10 @@ stack:
   - HTML5
   - CSS3
   - JavaScript
+description: >-
+  Arabic RTL marketing site for a Saudi events and exhibitions company,
+  featuring animated statistics, a video project showcase, a client logo
+  carousel, and reduced-motion accessibility support.
 url: https://nofoth.vercel.app/
 screenshot: nofoth-official-website.png
 featured: false

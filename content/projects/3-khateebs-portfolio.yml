@@ -5,5 +5,9 @@ stack:
   - Vue
   - TypeScript
   - TailwindCSS
+description: >-
+  Personal portfolio and blog on Nuxt 4 with YAML content collections,
+  auto-generated Open Graph images, Schema.org SEO, and a resume PDF generated
+  programmatically from content.
 url: https://github.com/khateeboveskey/khateeboveskey.github.io
 screenshot: khateeboveskey.github.io.png

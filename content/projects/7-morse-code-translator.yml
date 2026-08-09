@@ -3,5 +3,8 @@ type: Desktop App
 year: 2023
 stack:
   - CSharp
+description: >-
+  Windows Forms desktop app that translates text to Morse code and back,
+  persisting translation history in MySQL.
 url: https://github.com/khateeboveskey/winform-morse-code-translator
 screenshot: winform-morse-code-translator.png

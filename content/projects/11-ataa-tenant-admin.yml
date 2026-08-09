@@ -5,6 +5,11 @@ stack:
   - TypeScript
   - Vue
   - TailwindCSS
+description: >-
+  Per-organization control panel for the Ataa storefront: donation projects
+  and campaigns, gifts, orders and abandoned carts, customers, coordinators,
+  branches, bank deductions, reports and statistics, plus store settings for
+  payments, SEO, banners, menus, and CMS pages.
 url: null
 screenshot: ataa-tenant-admin.png
 featured: true

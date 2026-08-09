@@ -5,6 +5,10 @@ stack:
   - Vue
   - Nuxt
   - TailwindCSS
+description: >-
+  Arabic RTL corporate website presenting the center's programs and program
+  detail pages, services, a media center, downloadable folders, a join-us
+  application form, and contact channels.
 url: https://edialoguec.org.sa/
 screenshot: rokn-al-hewar-official-website.png
 featured: true
