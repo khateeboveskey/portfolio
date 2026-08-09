@@ -4,5 +4,8 @@ year: 2024
 stack:
   - Vue
   - TailwindCSS
+description: >-
+  Vue client for a CRM REST API, covering authentication and management of
+  contacts, deals, interests, locations, and tags.
 url: https://github.com/khateeboveskey/mersal-crms
 screenshot: mersal-crms.png

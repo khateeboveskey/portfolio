@@ -5,6 +5,11 @@ stack:
   - TypeScript
   - Vue
   - TailwindCSS
+description: >-
+  Multi-tenant charity storefront on Vue 3 and Vite with an Express SSR layer
+  that resolves each tenant by domain and injects its SEO, theme, and
+  hydration data; covers donation campaigns, sponsorships, Zakat calculation
+  and payment, a gift store, subscriptions, and a donor dashboard.
 url: null
 screenshot: ataa-tenant-store.png
 featured: true

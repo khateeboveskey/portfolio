@@ -48,6 +48,7 @@ export interface ResumeConfig {
     education: ResumeSectionConfig;
     experience: ResumeExperienceConfig;
     skills: ResumeSkillsConfig;
+    languages: ResumeSectionConfig;
     projects: ResumeProjectsConfig;
     courses: ResumeSectionConfig;
     honorsAndAwards: ResumeSectionConfig;
@@ -71,6 +72,7 @@ const resumeConfig: ResumeConfig = {
     'education',
     'experience',
     'skills',
+    'languages',
     'projects',
     'courses',
     'honorsAndAwards',
@@ -108,6 +110,9 @@ const resumeConfig: ResumeConfig = {
         Testing: ['Playwright', 'Vitest'],
         'Tools & DevOps': ['Git'],
       },
+    },
+    languages: {
+      visible: true,
     },
     projects: {
       visible: true,

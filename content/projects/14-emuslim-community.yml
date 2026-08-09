@@ -6,5 +6,9 @@ stack:
   - Vue
   - Nuxt
   - UnoCSS
+description: >-
+  Bilingual (English, Filipino) Nuxt 4 SSR community platform pairing a public
+  site of articles, videos, webinars, postcards, FAQ, and useful links with an
+  admin panel for content, newsletter, and message management.
 url: https://emuslimcommunity.org/
 screenshot: emuslim-community.png

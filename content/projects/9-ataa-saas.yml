@@ -6,6 +6,12 @@ stack:
   - Vue
   - Nuxt
   - TailwindCSS
+description: >-
+  pnpm monorepo behind the Ataa SaaS: a marketing site with pricing,
+  solutions, and a help center, plus a protected dashboard for tenant
+  organizations, subscription and service requests, billing, roles, and
+  notifications, sharing UI and core-plugin packages with the store and
+  cashier apps.
 url: https://saas.ataa.com.sa/
 screenshot: ataa-saas.png
 featured: true

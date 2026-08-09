@@ -4,5 +4,8 @@ year: 2023
 stack:
   - Vue
   - TailwindCSS
+description: >-
+  Nuxt website for a nonprofit association, presenting its about, news, and
+  projects sections through a carousel-driven responsive layout.
 url: https://github.com/khateeboveskey/balqis-association
 screenshot: balqis-association.png

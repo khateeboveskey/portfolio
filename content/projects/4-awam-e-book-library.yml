@@ -4,5 +4,8 @@ year: 2024
 stack:
   - Laravel
   - TailwindCSS
+description: >-
+  Laravel e-book library with browsing by book, author, and category, user
+  profiles and authentication, and an admin area for catalog management.
 url: https://github.com/khateeboveskey/awam-ebooks-library
 screenshot: awam-ebooks-library.png

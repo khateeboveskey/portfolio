@@ -6,6 +6,10 @@ stack:
   - Vue
   - Nuxt
   - TailwindCSS
+description: >-
+  In-branch donation collection app with a staff mode over projects,
+  donations, sponsorships, and Zakat, and a self-service kiosk flow covering
+  browsing, cart, phone verification, and live payment status.
 url: null
 screenshot: ataa-tenant-cashier.png
 featured: true

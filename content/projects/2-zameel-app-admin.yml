@@ -5,5 +5,8 @@ stack:
   - TypeScript
   - Vue
   - Nuxt
+description: >-
+  Nuxt admin dashboard for the Zameel student app, managing colleges, majors,
+  subjects, academic groups, users, and soft-deleted records.
 url: https://github.com/khateeboveskey/zameel-admin
 screenshot: zameel.png

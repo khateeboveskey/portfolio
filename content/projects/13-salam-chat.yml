@@ -6,6 +6,10 @@ stack:
   - Vue
   - Nuxt
   - UnoCSS
+description: >-
+  Multilingual (English, French, Spanish) Nuxt 4 site for an Islamic outreach
+  platform, with a questions-and-answers library, topical da'wah content, FAQ,
+  and contact pages, implemented from Figma with encrypted auth token storage.
 url: https://salamchat.net
 screenshot: salam-chat.png
 featured: true

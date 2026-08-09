@@ -73,6 +73,7 @@ type SectionKey =
   | 'education'
   | 'experience'
   | 'skills'
+  | 'languages'
   | 'projects'
   | 'courses'
   | 'honorsAndAwards'
@@ -307,6 +308,18 @@ function renderSkills(ctx: PdfContext, skills: SkillsCollectionItem): void {
   }
 }
 
+function renderLanguages(
+  ctx: PdfContext,
+  personalInfo: PersonalInfoCollectionItem,
+): void {
+  drawSectionTitle(ctx, 'Languages');
+  for (const [language, proficiency] of Object.entries(
+    personalInfo.languages,
+  )) {
+    drawBullet(ctx, `${language}: ${proficiency}`);
+  }
+}
+
 function renderProjects(
   ctx: PdfContext,
   projects: ProjectsCollectionItem[],
@@ -323,6 +336,9 @@ function renderProjects(
     drawInlineLeftRight(ctx, proj.name, String(proj.year), { bold: true });
     drawText(ctx, proj.type, { italic: true, fontSize: FONT_SIZE_SMALL });
 
+    if (projConfig.showDescriptions && proj.description) {
+      drawBullet(ctx, `Description: ${proj.description}`);
+    }
     if (proj.url) {
       drawBullet(ctx, `URL: ${proj.url.replace('https://', '')}`);
     }
@@ -418,6 +434,7 @@ const sectionRenderers: Record<SectionKey, SectionRenderer> = {
   education: (ctx, data) => renderEducation(ctx, data.education),
   experience: (ctx, data) => renderExperience(ctx, data.experience),
   skills: (ctx, data) => renderSkills(ctx, data.skills),
+  languages: (ctx, data) => renderLanguages(ctx, data.personalInfo),
   projects: (ctx, data) => renderProjects(ctx, data.projects),
   courses: (ctx, data) => renderCourses(ctx, data.courses),
   honorsAndAwards: (ctx, data) =>
