@@ -25,8 +25,8 @@
 </template>
 
 <script setup lang="ts">
-const { data: items } = await useAsyncData('projects-list', () =>
-  queryCollection('projects').all(),
+const { data: items } = await useAsyncData('projects-list', async () =>
+  sortProjectsByRecency(await queryCollection('projects').all()),
 );
 
 const title = 'Projects';
