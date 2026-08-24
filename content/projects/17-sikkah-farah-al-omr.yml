@@ -1,0 +1,18 @@
+name: Sikkah Farah Al Omr Website
+type: Website
+year: 2026
+stack:
+  - TypeScript
+  - Vue
+  - Nuxt
+  - TailwindCSS
+  - Laravel
+description: >-
+  Arabic RTL marketing site for a Saudi event and occasion styling company,
+  server-rendered from a Laravel API: an anchor-navigated home page covering
+  services with sub-service galleries, a works wall, statistics, testimonials,
+  FAQs and a four-step process, plus CMS-published pages and a direct-contact
+  page.
+url: https://sikkah-fa.com/
+screenshot: sikkah-farah-al-omr.png
+featured: true
