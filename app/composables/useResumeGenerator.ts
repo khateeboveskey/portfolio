@@ -487,10 +487,8 @@ export function useResumeGenerator() {
       const sortedEducation = [...(education || [])].sort(
         (a, b) => b.startYear - a.startYear,
       );
-      // Sort projects: by year descending
-      const sortedProjects = [...(projects || [])].sort(
-        (a, b) => b.year - a.year,
-      );
+      // Sort projects: by year descending, newest entry first within a year
+      const sortedProjects = sortProjectsByRecency(projects || []);
       // Sort courses: by year descending
       const sortedCourses = [...(courses || [])].sort(
         (a, b) => b.year - a.year,

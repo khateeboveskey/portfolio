@@ -25,7 +25,7 @@
 
 <script setup lang="ts">
 const { data: projects } = await useAsyncData('projects:home', async () => {
-  const all = await queryCollection('projects').order('year', 'DESC').all();
-  return featuredOrFallback(all);
+  const all = await queryCollection('projects').all();
+  return featuredOrFallback(sortProjectsByRecency(all));
 });
 </script>
