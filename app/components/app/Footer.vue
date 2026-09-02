@@ -17,7 +17,7 @@
         <div class="space-y-4">
           <h2 class="text-lg font-semibold">About Me</h2>
           <p class="text-sm leading-relaxed text-inverted/80 md:text-base">
-            {{ objective.split('.')[0] }}.
+            {{ objectiveLead }}
           </p>
         </div>
 
@@ -52,6 +52,13 @@ const { withYears } = await useExperienceYears();
 
 const objective = computed(() => withYears(info.value?.objective ?? ''));
 const accounts = computed(() => info.value?.accounts ?? {});
+
+// First sentence only. The period must be followed by whitespace or the end of
+// the text, so decimals like "1.5+ years" no longer cut the sentence short.
+const objectiveLead = computed(() => {
+  const text = objective.value.trim();
+  return text.match(/^[\s\S]*?[.!?](?=\s|$)/)?.[0] ?? text;
+});
 
 useHead({
   link: [
