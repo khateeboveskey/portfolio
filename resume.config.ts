@@ -63,7 +63,7 @@ const resumeConfig: ResumeConfig = {
 
   header: {
     name: 'Abdulrahman Saleh Al-Khateeb',
-    title: 'Frontend Developer | Technical Trainer',
+    title: 'Fullstack Developer | Technical Trainer',
     website: 'khateeb.me',
   },
 

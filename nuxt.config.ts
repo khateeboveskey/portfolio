@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     url: 'https://khateeb.me',
     name: "Khateeb's Portfolio",
     description:
-      'A.Rahman Al-Khateeb (Khateeb) — Frontend Developer & Technical Trainer. Vue, Nuxt, TypeScript, and Laravel projects, articles, and experience.',
+      'A.Rahman Al-Khateeb (Khateeb) — Fullstack Developer & Technical Trainer. Vue, Nuxt, TypeScript, and Laravel projects, articles, and experience.',
     defaultLocale: 'en',
     indexable: true,
   },
@@ -101,7 +101,7 @@ export default defineNuxtConfig({
       alternateName: 'Khateeb',
       url: 'https://khateeb.me',
       image: 'https://khateeb.me/imgs/me.png',
-      jobTitle: 'Frontend Developer',
+      jobTitle: 'Fullstack Developer',
       email: 'khateeboveskey@gmail.com',
       nationality: 'Yemeni',
       sameAs: [

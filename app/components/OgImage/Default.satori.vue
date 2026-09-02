@@ -72,7 +72,7 @@
             text-transform: uppercase;
             color: #e64d33;
           "
-          >Frontend Developer · Technical Trainer</span
+          >Fullstack Developer · Technical Trainer</span
         >
         <h1
           style="

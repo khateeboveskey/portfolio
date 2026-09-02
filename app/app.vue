@@ -11,13 +11,13 @@
 
 <script setup lang="ts">
 const description =
-  'A.Rahman Al-Khateeb (Khateeb) — Frontend Developer & Technical Trainer. Vue, Nuxt, TypeScript, and Laravel projects, articles, and experience.';
+  'A.Rahman Al-Khateeb (Khateeb) — Fullstack Developer & Technical Trainer. Vue, Nuxt, TypeScript, and Laravel projects, articles, and experience.';
 
 useHead({
   titleTemplate: (title) =>
     title && title !== "Khateeb's Portfolio"
       ? `${title} | Khateeb's Portfolio`
-      : "Khateeb's Portfolio — Frontend Developer",
+      : "Khateeb's Portfolio — Fullstack Developer",
   meta: [
     { name: 'generator', content: 'Nuxt' },
     { name: 'application-name', content: "Khateeb's Portfolio" },
