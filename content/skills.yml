@@ -19,7 +19,7 @@ hard:
     website: https://getbootstrap.com/
   - name: Tailwind CSS
     icon: logos:tailwindcss-icon
-    website: http://tailwindcss.com/
+    website: https://tailwindcss.com/
     featured: true
   - name: Sass
     icon: logos:sass
