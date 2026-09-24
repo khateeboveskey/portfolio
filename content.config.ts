@@ -75,6 +75,9 @@ export default defineContentConfig({
         stack: z.array(z.string()),
         url: z.string().nullable(),
         screenshot: z.string(),
+        // Filled in from the image file at build time (see nuxt.config.ts).
+        screenshotWidth: z.number().optional(),
+        screenshotHeight: z.number().optional(),
         logo: z.string().optional(),
         featured: z.boolean().optional(),
         description: z.string().optional(),

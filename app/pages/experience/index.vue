@@ -1,31 +1,34 @@
 <template>
-  <div class="container mx-auto px-4 py-12 max-w-4xl">
-    <h1 class="text-4xl font-bold mb-8">Experience</h1>
-    <p v-if="!items?.length" class="text-muted">No experience entries yet.</p>
-    <ul class="space-y-6">
-      <li
-        v-for="item in items"
-        :key="item.stem"
-        class="border border-default p-6 hover:bg-elevated transition"
-      >
-        <NuxtLink :to="`/experience/${stemToSlug(item.stem)}`" class="block">
-          <div class="flex justify-between items-baseline gap-4 flex-wrap">
-            <h2 class="text-2xl font-semibold">{{ item.position }}</h2>
-            <span class="text-sm text-muted"
-              >{{ item.startDate }} – {{ item.endDate }}</span
-            >
-          </div>
-          <p class="text-lg text-muted mt-1">{{ item.company }}</p>
-          <p class="text-sm mt-2">{{ item.category }}</p>
-        </NuxtLink>
+  <section class="px-4 pb-16 md:px-8 md:pb-24 lg:px-16 xl:px-32">
+    <UiSectionHeader as="h1" subtitle="What I've Done">
+      Experience
+    </UiSectionHeader>
+    <p v-if="!items?.length" class="text-center">No experience entries yet.</p>
+    <ul class="space-y-6 sm:space-y-8 md:space-y-11">
+      <li v-for="(item, index) in items" :key="item.stem">
+        <HomeProfessionalExpSectionUiExperienceCard
+          :job-title="item.position"
+          :company="item.company"
+          :company-url="item.website"
+          :order="index + 1"
+          :year="experienceEndLabel(item.endDate)"
+          :category="item.category"
+          :period="formatExperiencePeriod(item.startDate, item.endDate)"
+          :to="`/experience/${stemToSlug(item.stem)}`"
+          :heading-level="2"
+        />
       </li>
     </ul>
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">
 const { data: items } = await useAsyncData('experience-list', async () =>
-  sortExperienceByEndDate(await queryCollection('experience').all()),
+  sortExperienceByEndDate(
+    await queryCollection('experience')
+      .select(...EXPERIENCE_CARD_FIELDS)
+      .all(),
+  ),
 );
 
 const title = 'Experience';
@@ -38,7 +41,6 @@ useSeoMeta({
   description,
   ogDescription: description,
   ogType: 'profile',
-  ogUrl: '/experience',
   twitterTitle: 'Experience — Khateeb',
   twitterDescription: description,
 });
@@ -51,6 +53,7 @@ defineOgImage('Page', {
 
 useSchemaOrg([
   defineWebPage({
+    '@type': 'CollectionPage',
     name: 'Experience',
     description,
   }),

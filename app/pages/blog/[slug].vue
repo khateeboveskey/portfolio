@@ -1,53 +1,50 @@
 <template>
-  <UContainer class="py-12">
-    <NuxtLink to="/blog" class="text-sm text-muted hover:underline"
-      >&larr; Back to blog</NuxtLink
-    >
+  <article class="px-4 pt-12 pb-16 md:px-8 md:pt-20 md:pb-24 lg:px-16 xl:px-32">
+    <div class="max-w-4xl">
+      <UiArrowLink to="/blog" back>Back to blog</UiArrowLink>
 
-    <article v-if="item" class="mt-4">
-      <header class="border-b-2 border-default pb-6">
-        <p class="text-sm uppercase tracking-wider text-muted">
-          {{ item.category }} &middot; {{ item.datePublished }}
-        </p>
-        <h1 class="mt-2 text-3xl font-bold sm:text-4xl">{{ item.title }}</h1>
-        <p class="mt-3">{{ item.description }}</p>
-      </header>
+      <template v-if="item">
+        <header class="mt-6 border-b-2 border-default pb-6">
+          <p
+            class="text-primary text-sm font-medium tracking-wider uppercase md:text-base"
+          >
+            {{ item.category }} &middot;
+            <time :datetime="toIsoDate(item.datePublished)">
+              {{ formatPublishedDate(item.datePublished) }}
+            </time>
+          </p>
+          <h1 class="mt-2 text-3xl font-bold sm:text-4xl lg:text-5xl">
+            {{ item.title }}
+          </h1>
+          <p class="mt-4 text-lg">{{ item.description }}</p>
+        </header>
 
-      <section v-if="item.body" class="mt-6 whitespace-pre-line">
-        {{ item.body }}
-      </section>
-      <section v-else class="mt-6 text-muted italic">
-        Full content coming soon.
-      </section>
+        <div v-if="item.body" class="mt-6 whitespace-pre-line">
+          {{ item.body }}
+        </div>
+        <p v-else class="mt-6 italic">Full content coming soon.</p>
 
-      <a
-        v-if="item.url"
-        :href="item.url"
-        target="_blank"
-        rel="noopener"
-        class="mt-8 inline-block border-2 border-default px-4 py-2 text-sm font-bold hover:bg-inverted hover:text-inverted"
-      >
-        Read on {{ item.urlTo }} &rarr;
-      </a>
-    </article>
+        <UiExternalLinkButton v-if="item.url" :href="item.url" class="mt-8">
+          Read on {{ item.urlTo }}
+        </UiExternalLinkButton>
+      </template>
 
-    <p v-else class="mt-8 text-muted">Article not found.</p>
-  </UContainer>
+      <p v-else class="mt-8">Article not found.</p>
+    </div>
+  </article>
 </template>
 
 <script setup lang="ts">
 const route = useRoute();
 const slug = computed(() => String(route.params.slug));
 
-const { data: items } = await useAsyncData(`article-${slug.value}`, () =>
-  queryCollection('articles').all(),
+const { data: item } = await useAsyncData(
+  () => `article-${slug.value}`,
+  async () => {
+    const all = await queryCollection('articles').all();
+    return all.find((a) => stemToSlug(a.stem) === slug.value) ?? null;
+  },
 );
-
-const item = computed(() =>
-  items.value?.find((a) => stemToSlug(a.stem) === slug.value),
-);
-
-const pagePath = computed(() => `/blog/${slug.value}`);
 
 const title = computed(() => item.value?.title ?? 'Article');
 const description = computed(
@@ -55,6 +52,7 @@ const description = computed(
     item.value?.description ??
     'Article on the Khateeb Portfolio blog — UX, software design, and engineering.',
 );
+const publishedAt = computed(() => toIsoDate(item.value?.datePublished));
 
 useSeoMeta({
   title,
@@ -62,10 +60,9 @@ useSeoMeta({
   description,
   ogDescription: description,
   ogType: 'article',
-  ogUrl: pagePath,
   twitterTitle: title,
   twitterDescription: description,
-  articlePublishedTime: () => item.value?.datePublished,
+  articlePublishedTime: publishedAt,
   articleAuthor: ['A.Rahman S. Al-Khateeb'],
   articleSection: () => item.value?.category,
 });
@@ -80,9 +77,16 @@ useSchemaOrg([
   defineArticle({
     headline: () => item.value?.title,
     description: () => item.value?.description,
-    datePublished: () => item.value?.datePublished,
-    articleSection: () => item.value?.category,
+    datePublished: publishedAt,
+    articleSection: item.value ? [item.value.category] : undefined,
     inLanguage: 'en-US',
+  }),
+  defineBreadcrumb({
+    itemListElement: [
+      { name: 'Home', item: '/' },
+      { name: 'Blog', item: '/blog' },
+      { name: title },
+    ],
   }),
 ]);
 </script>

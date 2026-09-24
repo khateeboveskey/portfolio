@@ -1,32 +1,30 @@
 <template>
-  <div class="container mx-auto px-4 py-12 max-w-6xl">
-    <h1 class="text-4xl font-bold mb-8">Projects</h1>
-    <p v-if="!items?.length" class="text-muted">No projects yet.</p>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <NuxtLink
-        v-for="item in items"
+  <section class="px-4 pb-16 md:px-8 md:pb-24 lg:px-16 xl:px-32">
+    <UiSectionHeader as="h1" subtitle="What I've Made"
+      >Projects</UiSectionHeader
+    >
+    <p v-if="!items?.length" class="text-center">No projects yet.</p>
+    <div
+      class="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3"
+    >
+      <HomeProjectsSectionUiProjectCard
+        v-for="(item, index) in items"
         :key="item.stem"
-        :to="`/projects/${stemToSlug(item.stem)}`"
-        class="border border-default p-5 hover:bg-elevated transition flex flex-col gap-2"
-      >
-        <NuxtImg
-          v-if="item.screenshot"
-          :src="`/imgs/projects-screenshots/${item.screenshot}`"
-          :alt="item.name"
-          class="w-full aspect-video object-cover object-top border border-default"
-          loading="lazy"
-        />
-        <h2 class="text-xl font-semibold mt-2">{{ item.name }}</h2>
-        <p class="text-sm text-muted">{{ item.type }} · {{ item.year }}</p>
-        <p class="text-xs text-muted">{{ item.stack.join(', ') }}</p>
-      </NuxtLink>
+        :project="item"
+        :priority="index === 0"
+        :heading-level="2"
+      />
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">
 const { data: items } = await useAsyncData('projects-list', async () =>
-  sortProjectsByRecency(await queryCollection('projects').all()),
+  sortProjectsByRecency(
+    await queryCollection('projects')
+      .select(...PROJECT_CARD_FIELDS)
+      .all(),
+  ),
 );
 
 const title = 'Projects';
@@ -39,7 +37,6 @@ useSeoMeta({
   description,
   ogDescription: description,
   ogType: 'website',
-  ogUrl: '/projects',
   twitterTitle: 'Projects by Khateeb',
   twitterDescription: description,
 });
@@ -52,6 +49,7 @@ defineOgImage('Page', {
 
 useSchemaOrg([
   defineWebPage({
+    '@type': 'CollectionPage',
     name: 'Projects',
     description,
   }),

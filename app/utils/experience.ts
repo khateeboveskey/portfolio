@@ -117,3 +117,23 @@ export function sortExperienceByEndDate<T extends SortableExperience>(
     return (b.stem ?? '').localeCompare(a.stem ?? '');
   });
 }
+
+/**
+ * Short end-of-role label for experience cards: the end year, or the raw value
+ * upper-cased for ongoing roles (`present` -> `PRESENT`).
+ */
+export function experienceEndLabel(endDate: string): string | number {
+  return parseInt(endDate.slice(-4)) || endDate.toUpperCase();
+}
+
+/** Fields an experience card renders; select only these for list queries. */
+export const EXPERIENCE_CARD_FIELDS = [
+  'stem',
+  'position',
+  'company',
+  'website',
+  'category',
+  'startDate',
+  'endDate',
+  'featured',
+] as const;

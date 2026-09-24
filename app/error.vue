@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { NuxtError } from "#app";
+import type { NuxtError } from '#app';
 
 const props = defineProps<{
   error: NuxtError;
@@ -7,30 +7,25 @@ const props = defineProps<{
 
 useHead({
   title:
-    "Error" + (props.error?.statusCode ? ` ${props.error.statusCode}` : ""),
+    'Error' + (props.error?.statusCode ? ` ${props.error.statusCode}` : ''),
 });
 </script>
 
 <template>
-  <NuxtLayout class="font-sans min-h-screen w-full">
+  <NuxtLayout class="min-h-screen w-full">
     <div
-      class="container mx-auto px-4 min-h-screen flex items-center justify-center"
+      class="flex min-h-[60vh] items-center justify-center px-4 py-16 md:px-8"
     >
-      <div class="text-center max-w-2xl mx-auto py-8 px-4">
+      <div class="mx-auto max-w-2xl text-center">
         <h1
-          class="text-[clamp(7rem,15vw,12rem)] font-extrabold tracking-wider leading-tight mb-4"
+          class="mb-4 text-[clamp(7rem,15vw,12rem)] leading-tight font-extrabold tracking-wider"
         >
-          {{ error?.statusCode || "404" }}
+          {{ error?.statusCode || '404' }}
         </h1>
-        <p class="text-[clamp(1.25rem,4vw,2rem)] mb-8 opacity-90">
-          {{ error?.message || "Page not found" }}
+        <p class="mb-8 text-[clamp(1.25rem,4vw,2rem)] opacity-90">
+          {{ error?.message || 'Page not found' }}
         </p>
-        <NuxtLink
-          class="inline-block text-white text-primary hover:opacity-90 transition-opacity duration-300 px-6 py-3 md:text-lg"
-          to="/"
-        >
-          Return to Homepage
-        </NuxtLink>
+        <UiArrowLink to="/" back>Return to homepage</UiArrowLink>
       </div>
     </div>
   </NuxtLayout>

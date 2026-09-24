@@ -32,3 +32,16 @@ export function sortProjectsByRecency<T extends SortableProject>(
     (a, b) => b.year - a.year || stemOrder(b.stem) - stemOrder(a.stem),
   );
 }
+
+/** Fields a project card renders; select only these for list queries. */
+export const PROJECT_CARD_FIELDS = [
+  'stem',
+  'name',
+  'type',
+  'year',
+  'stack',
+  'url',
+  'screenshot',
+  'logo',
+  'featured',
+] as const;

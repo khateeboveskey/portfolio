@@ -1,3 +1,6 @@
+import { readFileSync } from 'node:fs';
+import { imageMeta } from 'image-meta';
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
@@ -38,6 +41,51 @@ export default defineNuxtConfig({
 
   ui: {
     colorMode: false,
+    // Only emit theme CSS for the Nuxt UI components the app actually uses
+    // instead of the whole library (206 KB -> 117 KB of CSS).
+    experimental: {
+      componentDetection: true,
+    },
+  },
+
+  // Production only: in dev, /_nuxt/ serves unhashed Vite modules. On
+  // Cloudflare Pages, Nitro writes these rules into the generated `_headers`.
+  $production: {
+    routeRules: {
+      '/**': {
+        headers: {
+          'x-content-type-options': 'nosniff',
+          'referrer-policy': 'strict-origin-when-cross-origin',
+          'x-frame-options': 'SAMEORIGIN',
+          'cross-origin-opener-policy': 'same-origin',
+          'permissions-policy': 'camera=(), microphone=(), geolocation=()',
+        },
+      },
+      // Content-hashed build output never changes under the same URL.
+      '/_nuxt/**': {
+        headers: { 'cache-control': 'public, max-age=31536000, immutable' },
+      },
+      // These keep their URL when the source file is replaced, so they get
+      // a week of freshness plus background revalidation instead.
+      '/_ipx/**': {
+        headers: {
+          'cache-control':
+            'public, max-age=604800, stale-while-revalidate=2592000',
+        },
+      },
+      '/imgs/**': {
+        headers: {
+          'cache-control':
+            'public, max-age=604800, stale-while-revalidate=2592000',
+        },
+      },
+      '/fonts/**': {
+        headers: {
+          'cache-control':
+            'public, max-age=604800, stale-while-revalidate=2592000',
+        },
+      },
+    },
   },
 
   nitro: {
@@ -61,7 +109,6 @@ export default defineNuxtConfig({
     '@nuxt/hints',
     '@nuxt/image',
     '@nuxt/ui',
-    'nuxt-marquee',
     '@nuxt/content',
     '@nuxtjs/seo',
   ],
@@ -71,6 +118,9 @@ export default defineNuxtConfig({
 
   sitemap: {
     autoLastmod: true,
+    // Image discovery double-escapes the `&` in /_ipx/ URLs
+    // (`w_768&amp;amp;f_webp`), which publishes broken image locations.
+    discoverImages: false,
     defaults: {
       changefreq: 'weekly',
       priority: 0.7,
@@ -118,11 +168,11 @@ export default defineNuxtConfig({
   seo: {
     meta: {
       author: 'A.Rahman S. Al-Khateeb',
-      colorScheme: 'light dark',
-      themeColor: [
-        { content: '#ffffff', media: '(prefers-color-scheme: light)' },
-        { content: '#000000', media: '(prefers-color-scheme: dark)' },
-      ],
+      // The site ships a single light theme (ui.colorMode is off), so don't
+      // advertise dark support: browsers would paint dark scrollbars and
+      // form controls against the light page.
+      colorScheme: 'light',
+      themeColor: '#f3f1ef',
       twitterCard: 'summary_large_image',
       twitterCreator: '@khateeb404',
       twitterSite: '@khateeb404',
@@ -134,6 +184,26 @@ export default defineNuxtConfig({
 
   linkChecker: {
     enabled: false,
+  },
+
+  hooks: {
+    // Record each project screenshot's pixel size so pages can reserve its
+    // space: they are full-page captures up to 14,000px tall, and an unsized
+    // one pushes everything below it down as it loads.
+    'content:file:afterParse'({ collection, content }) {
+      if (
+        collection.name !== 'projects' ||
+        typeof content.screenshot !== 'string'
+      )
+        return;
+      const file = new URL(
+        `./public/imgs/projects-screenshots/${content.screenshot}`,
+        import.meta.url,
+      );
+      const { width, height } = imageMeta(readFileSync(file));
+      content.screenshotWidth = width;
+      content.screenshotHeight = height;
+    },
   },
 
   image: {

@@ -1,34 +1,34 @@
 <template>
-  <UContainer class="py-12">
-    <div class="mb-8">
-      <NuxtLink to="/" class="text-sm text-muted hover:underline"
-        >&larr; Back to home</NuxtLink
-      >
-      <h1 class="mt-2 text-3xl font-bold sm:text-4xl">Skills</h1>
-      <p class="mt-2 text-muted">Tools, technologies, and traits.</p>
-    </div>
+  <div class="px-4 pb-16 md:px-8 md:pb-24 lg:px-16 xl:px-32">
+    <UiSectionHeader as="h1" subtitle="Tools, technologies, and traits">
+      Skills
+    </UiSectionHeader>
 
-    <section class="mb-10">
-      <h2 class="text-xl font-bold">Hard Skills</h2>
+    <section aria-labelledby="hard-skills" class="mb-10 md:mb-16">
+      <h2 id="hard-skills" class="text-xl font-bold md:text-2xl">
+        Hard Skills
+      </h2>
       <ul
         v-if="data?.hard?.length"
-        class="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4"
+        class="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 md:mt-6 lg:grid-cols-4"
       >
         <li v-for="skill in data.hard" :key="skill.name">
           <NuxtLink
             :to="`/skills/${slugify(skill.name)}`"
-            class="group flex items-center gap-3 border-2 border-default p-3 transition hover:bg-inverted hover:text-inverted"
+            class="group flex items-center gap-3 border-2 border-default p-3 transition-colors hover:bg-inverted hover:text-inverted"
           >
-            <i :class="skill.icon" class="text-2xl" />
+            <UIcon :name="skill.icon" class="size-6 shrink-0" />
             <span class="font-medium">{{ skill.name }}</span>
           </NuxtLink>
         </li>
       </ul>
     </section>
 
-    <section>
-      <h2 class="text-xl font-bold">Soft Skills</h2>
-      <ul v-if="data?.soft?.length" class="mt-4 flex flex-wrap gap-2">
+    <section aria-labelledby="soft-skills">
+      <h2 id="soft-skills" class="text-xl font-bold md:text-2xl">
+        Soft Skills
+      </h2>
+      <ul v-if="data?.soft?.length" class="mt-4 flex flex-wrap gap-2 md:mt-6">
         <li
           v-for="s in data.soft"
           :key="s"
@@ -38,13 +38,11 @@
         </li>
       </ul>
     </section>
-  </UContainer>
+  </div>
 </template>
 
 <script setup lang="ts">
-const { data } = await useAsyncData('skills', () =>
-  queryCollection('skills').first(),
-);
+const { data } = await useSkills();
 
 const title = 'Skills';
 const description =
@@ -56,7 +54,6 @@ useSeoMeta({
   description,
   ogDescription: description,
   ogType: 'profile',
-  ogUrl: '/skills',
   twitterTitle: 'Skills — Khateeb',
   twitterDescription: description,
 });
@@ -69,6 +66,7 @@ defineOgImage('Page', {
 
 useSchemaOrg([
   defineWebPage({
+    '@type': 'CollectionPage',
     name: 'Skills',
     description,
   }),

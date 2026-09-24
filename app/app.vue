@@ -1,11 +1,12 @@
 <template>
   <div>
     <NuxtRouteAnnouncer />
-    <UApp>
-      <NuxtLayout class="bg-default text-default overflow-x-hidden">
-        <NuxtPage />
-      </NuxtLayout>
-    </UApp>
+    <!-- No Nuxt UI App wrapper: the site uses no toasts, tooltips, or
+    overlays, and its providers added ~40 KB (brotli) of runtime to every page
+    plus an empty "Notifications" region. Re-add it before using any of them. -->
+    <NuxtLayout class="bg-default text-default overflow-x-hidden">
+      <NuxtPage />
+    </NuxtLayout>
   </div>
 </template>
 
@@ -13,14 +14,19 @@
 const description =
   'A.Rahman Al-Khateeb (Khateeb) — Fullstack Developer & Technical Trainer. Vue, Nuxt, TypeScript, and Laravel projects, articles, and experience.';
 
+const siteName = "Khateeb's Portfolio";
+
 useHead({
-  titleTemplate: (title) =>
-    title && title !== "Khateeb's Portfolio"
-      ? `${title} | Khateeb's Portfolio`
-      : "Khateeb's Portfolio — Fullstack Developer",
+  // Titles that already carry the site name (e.g. the home page) are used
+  // as-is instead of getting a second "| Khateeb's Portfolio" suffix.
+  titleTemplate: (title) => {
+    if (!title || title === siteName)
+      return `${siteName} — Fullstack Developer`;
+    return title.includes(siteName) ? title : `${title} | ${siteName}`;
+  },
   meta: [
     { name: 'generator', content: 'Nuxt' },
-    { name: 'application-name', content: "Khateeb's Portfolio" },
+    { name: 'application-name', content: siteName },
     { name: 'apple-mobile-web-app-title', content: 'Khateeb' },
     { name: 'apple-mobile-web-app-capable', content: 'yes' },
     { name: 'mobile-web-app-capable', content: 'yes' },

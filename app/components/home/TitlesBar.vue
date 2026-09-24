@@ -10,12 +10,18 @@
         :style="{ transform: `translateX(${scrollPosition}px)` }"
         style="transition-duration: 0ms"
       >
-        <template v-for="(title, index) in duplicatedTitles" :key="index">
+        <!-- The list repeats to fill the strip; only the first pass is exposed
+        to assistive tech. -->
+        <span
+          v-for="(title, index) in duplicatedTitles"
+          :key="index"
+          :aria-hidden="index >= titles.length ? 'true' : undefined"
+        >
           {{ title }}
           <AppLogo
             class="mx-4 inline-block h-4 -translate-y-0.5 sm:mx-6 sm:h-5 md:mx-10 md:h-6"
           />
-        </template>
+        </span>
       </div>
     </div>
   </div>
@@ -26,18 +32,27 @@ const titles = ['Web Developer', 'UI/UX Designer', 'Content Creator', 'Author'];
 const scrollPosition = ref(0);
 const duplicatedTitles = computed(() => [...titles, ...titles, ...titles]);
 
+// One style write per frame at most, from a passive listener, so scrolling
+// never waits on this handler.
+let frame = 0;
+const updatePosition = () => {
+  frame = 0;
+  const position = -window.scrollY * 0.5;
+  scrollPosition.value = position <= -1000 ? 0 : position;
+};
 const handleScroll = () => {
-  scrollPosition.value = -window.scrollY * 0.5;
-  if (scrollPosition.value <= -1000) {
-    scrollPosition.value = 0;
-  }
+  if (!frame) frame = requestAnimationFrame(updatePosition);
 };
 
 onMounted(() => {
-  window.addEventListener('scroll', handleScroll);
+  // Scroll-linked motion is decorative; skip it for reduced-motion users.
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  updatePosition();
+  window.addEventListener('scroll', handleScroll, { passive: true });
 });
 
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll);
+  cancelAnimationFrame(frame);
 });
 </script>

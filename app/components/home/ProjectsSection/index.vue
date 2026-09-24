@@ -1,6 +1,6 @@
 <template>
   <section id="projects">
-    <div class="container mx-auto px-4">
+    <div class="px-4 md:px-8 lg:px-16 xl:px-32">
       <UiSectionHeader subtitle="What I've Made">Projects</UiSectionHeader>
       <div
         class="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3"
@@ -12,12 +12,7 @@
         />
       </div>
       <div class="mt-8 flex justify-center">
-        <NuxtLink
-          to="/projects"
-          class="text-primary text-sm font-medium uppercase tracking-widest hover:underline"
-        >
-          Show all projects &rarr;
-        </NuxtLink>
+        <UiArrowLink to="/projects">Show all projects</UiArrowLink>
       </div>
     </div>
   </section>
@@ -25,7 +20,10 @@
 
 <script setup lang="ts">
 const { data: projects } = await useAsyncData('projects:home', async () => {
-  const all = await queryCollection('projects').all();
+  // Only what the cards render: keeps descriptions out of the payload.
+  const all = await queryCollection('projects')
+    .select(...PROJECT_CARD_FIELDS)
+    .all();
   return featuredOrFallback(sortProjectsByRecency(all));
 });
 </script>

@@ -1,6 +1,6 @@
 <template>
   <section class="px-4 md:px-8 lg:px-16 xl:px-32">
-    <UiSectionHeader subtitle="What greate people say about me">
+    <UiSectionHeader subtitle="What great people say about me">
       Social Proof
     </UiSectionHeader>
     <div
@@ -12,13 +12,13 @@
         class="flex flex-col w-full sm:w-4/5 md:w-1/2 lg:w-1/3"
       >
         <div class="text-primary p-4 sm:p-5 bg-primary">
-          <h4 class="text-xl sm:text-2xl font-bold text-white mb-2 text-center">
+          <h3 class="text-xl sm:text-2xl font-bold text-white mb-2 text-center">
             {{ reference.name }}
-          </h4>
-          <p class="text-xs sm:text-sm text-white font-lighter text-center">
+          </h3>
+          <p class="text-xs sm:text-sm text-white text-center">
             {{ reference.degree }}
           </p>
-          <p class="text-xs sm:text-sm text-white font-lighter text-center">
+          <p class="text-xs sm:text-sm text-white text-center">
             {{ reference.position }}
           </p>
         </div>

@@ -1,4 +1,4 @@
-import { jsPDF } from 'jspdf';
+import type { jsPDF } from 'jspdf';
 import type {
   CertificationsCollectionItem,
   CoursesCollectionItem,
@@ -522,7 +522,9 @@ export function useResumeGenerator() {
         references: references || [],
       };
 
-      // Create PDF
+      // Create PDF. jsPDF is loaded on demand so it stays out of the home page
+      // bundle until someone actually asks for the resume.
+      const { jsPDF } = await import('jspdf');
       const doc = new jsPDF({ unit: 'mm', format: 'a4' });
       doc.setTextColor(30, 30, 30);
 

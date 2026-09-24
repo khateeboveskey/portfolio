@@ -1,12 +1,12 @@
 <template>
   <section
     id="about"
-    class="flex flex-col px-4 pt-4 sm:pt-12 md:px-32 md:pt-24"
+    class="flex flex-col px-4 pt-4 sm:pt-12 md:px-8 md:pt-24 lg:px-16 xl:px-32"
   >
-    <div class="flex flex-col justify-start gap-10 md:flex-row md:gap-20">
+    <div class="flex flex-col justify-start gap-10 lg:flex-row lg:gap-20">
       <div class="flex flex-col gap-8 flex-1/2">
         <span
-          class="text-default text-center text-xl font-semibold text-nowrap md:text-left md:text-3xl"
+          class="text-default text-center text-xl font-semibold text-nowrap md:text-3xl lg:text-left"
         >
           {{ firstName }}
           <AppLogo
@@ -14,9 +14,7 @@
           />
           {{ lastName }}
         </span>
-        <h2
-          class="text-default text-left text-4xl font-bold md:text-left md:text-5xl"
-        >
+        <h2 class="text-default text-left text-4xl font-bold md:text-5xl">
           Crafting digital experiences with passion and precision.
         </h2>
       </div>
@@ -31,9 +29,7 @@
 </template>
 
 <script setup lang="ts">
-const { data: info } = await useAsyncData('personalInfo:about', () =>
-  queryCollection('personalInfo').first(),
-);
+const { data: info } = await usePersonalInfo();
 
 const { withYears } = await useExperienceYears();
 

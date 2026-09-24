@@ -1,51 +1,61 @@
 <template>
-  <div class="container mx-auto px-4 py-12 max-w-4xl">
-    <NuxtLink to="/projects" class="text-sm text-muted hover:underline"
-      >← Back to Projects</NuxtLink
-    >
-    <template v-if="item">
-      <h1 class="text-4xl font-bold mt-4">{{ item.name }}</h1>
-      <p class="text-sm text-muted mt-1">{{ item.type }} · {{ item.year }}</p>
+  <article class="px-4 pt-12 pb-16 md:px-8 md:pt-20 md:pb-24 lg:px-16 xl:px-32">
+    <div class="max-w-4xl">
+      <UiArrowLink to="/projects" back>Back to projects</UiArrowLink>
 
-      <NuxtImg
-        v-if="item.screenshot"
-        :src="`/imgs/projects-screenshots/${item.screenshot}`"
-        :alt="item.name"
-        class="w-full mt-6 border border-default"
-        loading="lazy"
-      />
+      <template v-if="item">
+        <header class="mt-6 border-b-2 border-default pb-6">
+          <p
+            class="text-primary text-sm font-medium tracking-wider uppercase md:text-base"
+          >
+            {{ item.type }} &middot; {{ item.year }}
+          </p>
+          <h1 class="mt-2 text-3xl font-bold sm:text-4xl lg:text-5xl">
+            {{ item.name }}
+          </h1>
+          <p v-if="item.description" class="mt-4 text-lg">
+            {{ item.description }}
+          </p>
+        </header>
 
-      <p v-if="item.description" class="mt-6 text-lg">
-        {{ item.description }}
-      </p>
+        <h2 class="mt-8 mb-4 text-xl font-bold md:text-2xl">Tech Stack</h2>
+        <ul class="flex flex-wrap gap-2">
+          <li
+            v-for="tech in item.stack"
+            :key="tech"
+            class="border border-default px-3 py-1 text-sm"
+          >
+            {{ tech }}
+          </li>
+        </ul>
 
-      <h2 class="text-2xl font-semibold mt-8 mb-3">Tech Stack</h2>
-      <ul class="flex flex-wrap gap-2">
-        <li
-          v-for="tech in item.stack"
-          :key="tech"
-          class="px-3 py-1 border border-default text-sm"
-        >
-          {{ tech }}
-        </li>
-      </ul>
+        <UiExternalLinkButton v-if="item.url" :href="item.url" class="mt-8">
+          Visit project
+        </UiExternalLinkButton>
 
-      <p v-if="item.url" class="mt-6">
-        <a
-          :href="item.url"
-          target="_blank"
-          class="text-primary hover:underline"
-        >
-          Visit project ↗
-        </a>
-      </p>
+        <!-- Full-page capture, so it goes after the summary. Sized from the
+        real file dimensions so nothing jumps when it arrives; eager but not
+        high priority, since it's above the fold on desktop only. -->
+        <NuxtImg
+          v-if="item.screenshot"
+          :src="`/imgs/projects-screenshots/${item.screenshot}`"
+          :alt="`${item.name} screenshot`"
+          :width="item.screenshotWidth"
+          :height="item.screenshotHeight"
+          sizes="sm:100vw lg:896px"
+          format="webp"
+          loading="eager"
+          class="mt-10 h-auto w-full border-2 border-default"
+        />
 
-      <div v-if="item.body" class="mt-8 prose max-w-none whitespace-pre-line">
-        {{ item.body }}
-      </div>
-    </template>
-    <p v-else class="mt-8 text-muted">Project not found.</p>
-  </div>
+        <div v-if="item.body" class="mt-8 whitespace-pre-line">
+          {{ item.body }}
+        </div>
+      </template>
+
+      <p v-else class="mt-8">Project not found.</p>
+    </div>
+  </article>
 </template>
 
 <script setup lang="ts">
@@ -76,17 +86,16 @@ const screenshotUrl = computed(() =>
     : undefined,
 );
 
+// og:image / twitter:image come from defineOgImage below (1200×630). The raw
+// screenshots are up to 8 MB and 14,000px tall, too big for social cards.
 useSeoMeta({
   title,
   ogTitle: title,
   description,
   ogDescription: description,
   ogType: 'article',
-  ogUrl: pagePath,
-  ogImage: screenshotUrl,
   twitterTitle: title,
   twitterDescription: description,
-  twitterImage: screenshotUrl,
 });
 
 defineOgImage('Page', {
@@ -109,5 +118,12 @@ useSchemaOrg([
     dateCreated: () => item.value?.year?.toString(),
     author: { '@type': 'Person', name: 'A.Rahman S. Al-Khateeb' },
   },
+  defineBreadcrumb({
+    itemListElement: [
+      { name: 'Home', item: '/' },
+      { name: 'Projects', item: '/projects' },
+      { name: title },
+    ],
+  }),
 ]);
 </script>

@@ -1,6 +1,6 @@
 <template>
   <footer class="bg-inverted text-inverted py-12 pb-20">
-    <div class="container mx-auto px-4 md:px-8">
+    <div class="px-4 md:px-8 lg:px-16 xl:px-32">
       <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
         <!-- Brand Section -->
         <div class="flex flex-col justify-between space-y-4">
@@ -8,6 +8,18 @@
           <p class="text-sm text-inverted/80">
             Crafting digital experiences with passion and precision.
           </p>
+          <nav aria-label="Footer">
+            <ul class="flex flex-wrap gap-x-5 gap-y-1 text-sm">
+              <li v-for="link in pageLinks" :key="link.to">
+                <NuxtLink
+                  :to="link.to"
+                  class="inline-block py-1 hover:underline"
+                >
+                  {{ link.label }}
+                </NuxtLink>
+              </li>
+            </ul>
+          </nav>
           <p class="text-sm text-inverted/50">
             © {{ new Date().getFullYear() }} Khateeb. All rights reserved.
           </p>
@@ -24,19 +36,7 @@
         <!-- Social Links -->
         <div class="space-y-4">
           <h2 class="text-lg font-semibold">Connect With Me</h2>
-          <ul class="flex flex-wrap gap-4">
-            <li v-for="(value, key, index) in accounts" :key="index">
-              <a
-                :href="value"
-                :aria-label="`Follow on ${key}`"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="border-white/20 hover:border-white hover:bg-white/10 flex h-10 w-10 items-center justify-center rounded-full border transition-all"
-              >
-                <i :class="`fa-brands fa-${key} text-white text-lg`" />
-              </a>
-            </li>
-          </ul>
+          <AppSocialLinks />
         </div>
       </div>
     </div>
@@ -44,32 +44,23 @@
 </template>
 
 <script setup lang="ts">
-const { data: info } = await useAsyncData('personalInfo:footer', () =>
-  queryCollection('personalInfo').first(),
-);
+const pageLinks = [
+  { to: '/projects', label: 'Projects' },
+  { to: '/experience', label: 'Experience' },
+  { to: '/skills', label: 'Skills' },
+  { to: '/blog', label: 'Blog' },
+] as const;
+
+const { data: info } = await usePersonalInfo();
 
 const { withYears } = await useExperienceYears();
 
 const objective = computed(() => withYears(info.value?.objective ?? ''));
-const accounts = computed(() => info.value?.accounts ?? {});
 
 // First sentence only. The period must be followed by whitespace or the end of
 // the text, so decimals like "1.5+ years" no longer cut the sentence short.
 const objectiveLead = computed(() => {
   const text = objective.value.trim();
   return text.match(/^[\s\S]*?[.!?](?=\s|$)/)?.[0] ?? text;
-});
-
-useHead({
-  link: [
-    {
-      rel: 'stylesheet',
-      href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css',
-      integrity:
-        'sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==',
-      crossorigin: 'anonymous',
-      referrerpolicy: 'no-referrer',
-    },
-  ],
 });
 </script>

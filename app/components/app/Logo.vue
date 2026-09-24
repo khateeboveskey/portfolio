@@ -4,10 +4,13 @@
     to="/"
     class="flex flex-row items-center gap-2 *:transition-transform"
   >
-    <img src="/logo.svg" alt="khateeb-logo" class="text-primary h-6" />
-    <h1 class="text-2xl font-black md:text-3xl">Khateeb</h1>
+    <!-- Decorative: the visible "Khateeb" text already names the link. -->
+    <img src="/logo.svg" alt="" class="h-6 w-auto aspect-[979.79/504.34]" />
+    <span class="text-2xl font-black md:text-3xl">Khateeb</span>
   </NuxtLink>
-  <img v-else src="/logo.svg" alt="khateeb-logo" class="fill-green-500 h-6" />
+  <!-- Decorative mark used inside headings and section dividers. The aspect
+  ratio reserves its width before the SVG loads, so text doesn't shift. -->
+  <img v-else src="/logo.svg" alt="" class="aspect-[979.79/504.34]" />
 </template>
 
 <script setup lang="ts">

@@ -1,23 +1,17 @@
 <template>
   <header
-    class="bg-default sticky top-0 z-40 flex flex-row items-center justify-between px-4 py-4 pr-16 md:px-32 md:py-8"
+    class="bg-default sticky top-0 z-40 flex flex-row items-center justify-between px-4 py-4 pr-16 md:px-8 md:py-8 lg:px-16 xl:px-32"
   >
     <AppLogo with-name />
 
-    <!-- Hamburger Button (hidden while drawer is open; drawer has its own close) -->
+    <!-- Hamburger Button (the open drawer covers it and has its own close) -->
     <button
-      v-if="!isMenuOpen"
+      ref="menuButtonRef"
       :aria-expanded="isMenuOpen"
       aria-label="Open navigation menu"
       aria-controls="mobile-nav"
       type="button"
-      class="focus-visible:outline-primary absolute z-50 flex h-10 w-10 items-center justify-center rounded-md transition-colors hover:bg-black/5 focus-visible:outline-2 focus-visible:outline-offset-2 md:hidden"
-      style="
-        position: absolute;
-        top: 50%;
-        right: 1rem;
-        transform: translateY(-50%);
-      "
+      class="focus-visible:outline-primary absolute top-1/2 right-4 z-50 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-md transition-colors hover:bg-black/5 focus-visible:outline-2 focus-visible:outline-offset-2 md:hidden"
       @click="toggleMenu"
     >
       <svg
@@ -59,16 +53,18 @@
             v-if="isMenuOpen"
             class="fixed inset-0 z-30 bg-black/40 backdrop-blur-sm md:hidden"
             aria-hidden="true"
-            @click="closeMenu"
+            @click="closeMenu({ restoreFocus: true })"
           />
         </Transition>
 
         <Transition name="drawer">
-          <nav
+          <div
             v-if="isMenuOpen"
             id="mobile-nav"
             ref="drawerRef"
-            aria-label="Mobile"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Navigation menu"
             tabindex="-1"
             class="bg-default fixed inset-y-0 right-0 z-40 flex w-[min(20rem,85vw)] flex-col gap-8 overflow-y-auto px-6 pt-24 pb-8 shadow-2xl outline-none md:hidden"
           >
@@ -76,7 +72,7 @@
               type="button"
               aria-label="Close navigation menu"
               class="focus-visible:outline-primary absolute top-4 right-4 flex h-10 w-10 items-center justify-center rounded-md transition-colors hover:bg-black/5 focus-visible:outline-2 focus-visible:outline-offset-2"
-              @click="closeMenu"
+              @click="closeMenu({ restoreFocus: true })"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -95,18 +91,20 @@
               </svg>
             </button>
 
-            <ul class="flex flex-col gap-2 text-lg">
-              <li v-for="link in navLinks" :key="link.to">
-                <AppHeaderNavLink :to="link.to" @click="closeMenu">
-                  {{ link.label }}
-                </AppHeaderNavLink>
-              </li>
-            </ul>
+            <nav aria-label="Mobile" class="flex flex-1 flex-col gap-8">
+              <ul class="flex flex-col gap-2 text-lg">
+                <li v-for="link in navLinks" :key="link.to">
+                  <AppHeaderNavLink :to="link.to" @click="closeMenu()">
+                    {{ link.label }}
+                  </AppHeaderNavLink>
+                </li>
+              </ul>
 
-            <div class="mt-auto" @click="closeMenu">
-              <UiCTAButton />
-            </div>
-          </nav>
+              <div class="mt-auto" @click="closeMenu()">
+                <UiCTAButton />
+              </div>
+            </nav>
+          </div>
         </Transition>
       </Teleport>
     </ClientOnly>
@@ -116,32 +114,49 @@
 <script setup lang="ts">
 const isMenuOpen = ref(false);
 const drawerRef = ref<HTMLElement | null>(null);
+const menuButtonRef = ref<HTMLButtonElement | null>(null);
 const route = useRoute();
 
+// Root-relative so the section links also work from sub-pages.
 const navLinks = [
   { to: '/', label: 'Home' },
-  { to: '#about', label: 'About' },
-  { to: '#projects', label: 'Projects' },
-  { to: '#contact', label: 'Contact' },
+  { to: '/#about', label: 'About' },
+  { to: '/#projects', label: 'Projects' },
+  { to: '/#contact', label: 'Contact' },
 ] as const;
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
 };
 
-const closeMenu = () => {
+const closeMenu = ({ restoreFocus = false } = {}) => {
+  if (!isMenuOpen.value) return;
   isMenuOpen.value = false;
+  // Hand focus back to the toggle when the drawer is dismissed rather than
+  // followed; a followed link moves focus to its own target.
+  if (restoreFocus) nextTick(() => menuButtonRef.value?.focus());
 };
 
 // Close on route change
-watch(() => route.fullPath, closeMenu);
+watch(
+  () => route.fullPath,
+  () => closeMenu(),
+);
 
 const onKeydown = (event: KeyboardEvent) => {
-  if (event.key === 'Escape') closeMenu();
+  if (event.key === 'Escape') closeMenu({ restoreFocus: true });
+};
+
+// While the drawer is open the page behind it is inert: not focusable, not
+// clickable, and hidden from assistive tech, which keeps Tab inside the dialog.
+const setPageInert = (inert: boolean) => {
+  const app = document.getElementById('__nuxt');
+  if (app) app.inert = inert;
 };
 
 watch(isMenuOpen, (open) => {
   if (!import.meta.client) return;
+  setPageInert(open);
   if (open) {
     document.addEventListener('keydown', onKeydown);
     document.body.style.overflow = 'hidden';
@@ -154,6 +169,7 @@ watch(isMenuOpen, (open) => {
 
 onBeforeUnmount(() => {
   if (!import.meta.client) return;
+  setPageInert(false);
   document.removeEventListener('keydown', onKeydown);
   document.body.style.overflow = '';
 });
@@ -176,5 +192,14 @@ onBeforeUnmount(() => {
 .backdrop-enter-from,
 .backdrop-leave-to {
   opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drawer-enter-active,
+  .drawer-leave-active,
+  .backdrop-enter-active,
+  .backdrop-leave-active {
+    transition: none;
+  }
 }
 </style>

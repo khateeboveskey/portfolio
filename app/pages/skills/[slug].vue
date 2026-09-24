@@ -1,52 +1,58 @@
 <template>
-  <UContainer class="py-12">
-    <NuxtLink to="/skills" class="text-sm text-muted hover:underline"
-      >&larr; Back to skills</NuxtLink
-    >
+  <article class="px-4 pt-12 pb-16 md:px-8 md:pt-20 md:pb-24 lg:px-16 xl:px-32">
+    <div class="max-w-4xl">
+      <UiArrowLink to="/skills" back>Back to skills</UiArrowLink>
 
-    <article v-if="skill" class="mt-4">
-      <header class="flex items-center gap-4 border-b-2 border-default pb-6">
-        <i :class="skill.icon" class="text-5xl" />
-        <div>
-          <h1 class="text-3xl font-bold sm:text-4xl">{{ skill.name }}</h1>
-          <a
-            v-if="skill.website"
-            :href="skill.website"
-            target="_blank"
-            rel="noopener"
-            class="mt-1 inline-block text-sm hover:underline"
-            >{{ skill.website }}</a
-          >
+      <template v-if="skill">
+        <header
+          class="mt-6 flex items-center gap-4 border-b-2 border-default pb-6"
+        >
+          <UIcon :name="skill.icon" class="size-12 shrink-0" />
+          <h1 class="text-3xl font-bold sm:text-4xl lg:text-5xl">
+            {{ skill.name }}
+          </h1>
+        </header>
+
+        <p v-if="skill.description" class="mt-6 text-lg">
+          {{ skill.description }}
+        </p>
+        <p v-else class="mt-6 italic">Skill description coming soon.</p>
+
+        <div v-if="skill.body" class="mt-6 whitespace-pre-line">
+          {{ skill.body }}
         </div>
-      </header>
 
-      <section class="mt-6">
-        <p v-if="skill.description">{{ skill.description }}</p>
-        <p v-else class="text-muted italic">Skill description coming soon.</p>
-      </section>
+        <UiExternalLinkButton
+          v-if="skill.website"
+          :href="skill.website"
+          class="mt-8"
+        >
+          Visit {{ websiteHost }}
+        </UiExternalLinkButton>
+      </template>
 
-      <section v-if="skill.body" class="mt-6 whitespace-pre-line">
-        {{ skill.body }}
-      </section>
-    </article>
-
-    <p v-else class="mt-8 text-muted">Skill not found.</p>
-  </UContainer>
+      <p v-else class="mt-8">Skill not found.</p>
+    </div>
+  </article>
 </template>
 
 <script setup lang="ts">
 const route = useRoute();
 const slug = computed(() => String(route.params.slug));
 
-const { data } = await useAsyncData(`skill-${slug.value}`, () =>
-  queryCollection('skills').first(),
-);
+const { data } = await useSkills();
 
 const skill = computed(() =>
   data.value?.hard?.find((s) => slugify(s.name) === slug.value),
 );
 
-const pagePath = computed(() => `/skills/${slug.value}`);
+const websiteHost = computed(() => {
+  try {
+    return new URL(skill.value?.website ?? '').host.replace(/^www\./, '');
+  } catch {
+    return 'website';
+  }
+});
 
 const title = computed(() => skill.value?.name ?? 'Skill');
 const description = computed(() => {
@@ -61,7 +67,6 @@ useSeoMeta({
   description,
   ogDescription: description,
   ogType: 'profile',
-  ogUrl: pagePath,
   twitterTitle: title,
   twitterDescription: description,
 });
@@ -76,6 +81,13 @@ useSchemaOrg([
   defineWebPage({
     name: title,
     description,
+  }),
+  defineBreadcrumb({
+    itemListElement: [
+      { name: 'Home', item: '/' },
+      { name: 'Skills', item: '/skills' },
+      { name: title },
+    ],
   }),
 ]);
 </script>

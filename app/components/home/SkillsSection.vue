@@ -8,28 +8,24 @@
         v-for="skill in featuredSkills"
         :key="skill.name"
         :to="`/skills/${slugify(skill.name)}`"
+        :aria-label="skill.name"
+        :title="skill.name"
+        class="group"
       >
         <UIcon
           :name="skill.icon"
-          class="size-16 md:size-24 lg:size-30 grayscale hover:grayscale-0 transition-all"
+          class="size-16 md:size-24 lg:size-30 grayscale group-hover:grayscale-0 group-focus-visible:grayscale-0 transition-all"
         />
       </NuxtLink>
     </div>
     <div class="mt-8 flex justify-center">
-      <NuxtLink
-        to="/skills"
-        class="text-primary text-sm font-medium uppercase tracking-widest hover:underline"
-      >
-        Show all skills &rarr;
-      </NuxtLink>
+      <UiArrowLink to="/skills">Show all skills</UiArrowLink>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-const { data: skills } = await useAsyncData('skills:home', () =>
-  queryCollection('skills').first(),
-);
+const { data: skills } = await useSkills();
 
 const featuredSkills = computed(() =>
   featuredOrFallback(skills.value?.hard ?? []),

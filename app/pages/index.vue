@@ -28,7 +28,6 @@ useSeoMeta({
   description,
   ogDescription: description,
   ogType: 'profile',
-  ogUrl: '/',
   twitterTitle: title,
   twitterDescription: description,
 });

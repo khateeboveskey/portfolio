@@ -1,29 +1,29 @@
 <template>
-  <div class="container mx-auto px-4 py-12 max-w-4xl">
-    <h1 class="text-4xl font-bold mb-8">Blog</h1>
-    <p v-if="!items?.length" class="text-muted">No articles yet.</p>
-    <ul class="space-y-6">
-      <li
-        v-for="item in items"
-        :key="item.stem"
-        class="border border-default p-6 hover:bg-elevated transition"
-      >
-        <NuxtLink :to="`/blog/${stemToSlug(item.stem)}`" class="block">
-          <span class="text-xs text-muted uppercase tracking-wide">{{
-            item.category
-          }}</span>
-          <h2 class="text-2xl font-semibold mt-1">{{ item.title }}</h2>
-          <p class="text-sm text-muted mt-1">{{ item.datePublished }}</p>
-          <p class="mt-3 line-clamp-3">{{ item.description }}</p>
-        </NuxtLink>
+  <section class="px-4 pb-16 md:px-8 md:pb-24 lg:px-16 xl:px-32">
+    <UiSectionHeader as="h1" subtitle="What I've Written">Blog</UiSectionHeader>
+    <p v-if="!items?.length" class="text-center">No articles yet.</p>
+    <ul class="space-y-4 md:space-y-6 lg:space-y-10">
+      <li v-for="item in items" :key="item.stem">
+        <HomeArticlesSectionUiArticleCard :article="item" :heading-level="2" />
       </li>
     </ul>
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">
-const { data: items } = await useAsyncData('blog-list', () =>
-  queryCollection('articles').all(),
+const { data: items } = await useAsyncData('blog-list', async () =>
+  sortByPublishedDate(
+    await queryCollection('articles')
+      .select(
+        'stem',
+        'title',
+        'description',
+        'category',
+        'datePublished',
+        'urlTo',
+      )
+      .all(),
+  ),
 );
 
 const title = 'Blog';
@@ -36,7 +36,6 @@ useSeoMeta({
   description,
   ogDescription: description,
   ogType: 'website',
-  ogUrl: '/blog',
   twitterTitle: 'Blog — Articles by Khateeb',
   twitterDescription: description,
 });
@@ -49,6 +48,7 @@ defineOgImage('Page', {
 
 useSchemaOrg([
   defineWebPage({
+    '@type': 'CollectionPage',
     name: 'Blog',
     description,
   }),

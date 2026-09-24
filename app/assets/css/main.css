@@ -12,6 +12,10 @@
   --color-brand-300: #f59b94;
   --color-brand-400: #f37567;
   --color-brand-500: #e64d33; /* Primary Brand Color */
+  /* Brand-500 darkened just enough to reach WCAG AA (4.5:1) both as text on
+     the background and behind light text. Used for UI (buttons, links, small
+     accents); brand-500 itself stays in the logo and decorative marks. */
+  --color-brand-550: #c43f28;
   --color-brand-600: #ba3c27;
   --color-brand-700: #8d2c1b;
   --color-brand-800: #631c10;
@@ -45,7 +49,7 @@
 
 :root {
   /* Primary */
-  --ui-primary: var(--color-brand-500);
+  --ui-primary: var(--color-brand-550);
 
   /* Text */
   --ui-text: var(--color-foreground-500);
@@ -62,8 +66,15 @@
 }
 
 ::selection {
-  background-color: var(--ui-primary);
+  background-color: var(--color-brand-500);
   color: var(--ui-text);
+}
+
+/* One visible, on-brand focus ring for every interactive element that
+   doesn't draw its own (Nuxt UI components style their own). */
+:where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--ui-primary);
+  outline-offset: 2px;
 }
 
 /* #vue-inspector-container,
@@ -73,6 +84,14 @@
 
 html {
   @apply font-display;
-  scroll-behavior: smooth;
-  scroll-padding-top: 80px;
+  /* Keeps anchored sections clear of the sticky header (taller from md). */
+  scroll-padding-top: 5rem;
+
+  @variant md {
+    scroll-padding-top: 7.5rem;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    scroll-behavior: smooth;
+  }
 }

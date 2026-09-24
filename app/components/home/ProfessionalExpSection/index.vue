@@ -1,5 +1,5 @@
 <template>
-  <section class="w-full px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32">
+  <section class="w-full px-4 md:px-8 lg:px-16 xl:px-32">
     <UiSectionHeader subtitle="What I've done"
       >Professional Experience</UiSectionHeader
     >
@@ -14,7 +14,7 @@
           :company="exp.company"
           :company-url="exp.website"
           :order="index + 1"
-          :year="parseInt(exp.endDate.slice(-4)) || exp.endDate.toUpperCase()"
+          :year="experienceEndLabel(exp.endDate)"
           :category="exp.category"
           :to="`/experience/${stemToSlug(exp.stem)}`"
           class="w-full"
@@ -22,12 +22,7 @@
       </li>
     </ul>
     <div class="mt-8 flex justify-center">
-      <NuxtLink
-        to="/experience"
-        class="text-primary text-sm font-medium uppercase tracking-widest hover:underline"
-      >
-        Show all experience &rarr;
-      </NuxtLink>
+      <UiArrowLink to="/experience">Show all experience</UiArrowLink>
     </div>
   </section>
 </template>
@@ -37,7 +32,10 @@ import ExperienceCard from '@/components/home/ProfessionalExpSection/ui/Experien
 const { data: professionalExperience } = await useAsyncData(
   'experience',
   async () => {
-    const all = await queryCollection('experience').all();
+    // Only what the cards render: keeps achievements out of the payload.
+    const all = await queryCollection('experience')
+      .select(...EXPERIENCE_CARD_FIELDS)
+      .all();
     return sortExperienceByEndDate(featuredOrFallback(all));
   },
 );
