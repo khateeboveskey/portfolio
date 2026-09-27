@@ -20,7 +20,9 @@
         class="w-full sm:w-auto justify-center lg:justify-start"
       />
     </div>
-    <div class="relative w-full lg:me-14 lg:w-1/2">
+    <!-- Stacked (below lg), the backdrop mark would span the whole content
+    width; cap it at the width it has in the two-column layout at 1280px. -->
+    <div class="relative w-full max-w-lg lg:me-14 lg:w-1/2 lg:max-w-none">
       <AppLogo class="absolute inset-0 z-0 h-full w-full" />
       <!-- The LCP element: requested eagerly at high priority straight from
       the HTML. Its intrinsic size is fixed, so width/height only set the
