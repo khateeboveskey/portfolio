@@ -22,16 +22,12 @@
         >
           {{ props.project.name }}
         </component>
-        <span
-          class="text-primary group-hover:text-brand-400 ml-2 text-sm whitespace-nowrap sm:text-base"
-        >
+        <span class="text-primary ml-2 text-sm whitespace-nowrap sm:text-base">
           {{ props.project.year }}
         </span>
       </div>
       <div class="flex flex-wrap items-center justify-between gap-2">
-        <div
-          class="text-primary group-hover:text-brand-400 w-fit px-2 py-1 text-sm sm:text-base"
-        >
+        <div class="text-primary w-fit px-2 py-1 text-sm sm:text-base">
           {{ props.project.type }}
         </div>
         <ul class="flex flex-wrap gap-2" aria-label="Tech stack">

@@ -31,7 +31,7 @@
       class="flex w-full flex-row justify-between gap-2 text-base font-medium sm:gap-3 sm:text-lg lg:w-auto lg:shrink-0 lg:gap-4"
     >
       <span class="tracking-wider uppercase">{{ props.category }}</span>
-      <span class="text-primary group-hover:text-brand-400">
+      <span class="text-primary">
         {{ props.year }}
       </span>
     </div>

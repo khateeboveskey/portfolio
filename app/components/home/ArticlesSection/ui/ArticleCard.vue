@@ -5,7 +5,7 @@
   >
     <div class="mb-4 flex-1 space-y-2 md:mb-0 md:space-y-3">
       <div
-        class="text-primary group-hover:text-brand-400 text-sm font-medium tracking-wider uppercase md:text-base"
+        class="text-primary text-sm font-medium tracking-wider uppercase md:text-base"
       >
         {{ props.article.category }}
         <time
@@ -32,7 +32,7 @@
       </p>
       <!-- The card opens the article page on this site, which links out to
       the publication, so this is a byline rather than an external link. -->
-      <p class="text-primary group-hover:text-brand-400 text-sm md:text-base">
+      <p class="text-primary text-sm md:text-base">
         Published on {{ props.article.urlTo }}
       </p>
     </div>

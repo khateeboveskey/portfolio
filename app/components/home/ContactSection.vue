@@ -47,7 +47,7 @@
           <span
             v-if="showEmailError"
             id="contact-email-error"
-            class="text-brand-400 text-sm mt-1"
+            class="text-primary text-sm mt-1"
           >
             Please enter a valid email address
           </span>
@@ -71,7 +71,7 @@
           <span
             v-if="showMessageError"
             id="contact-message-error"
-            class="text-brand-400 text-sm mt-1"
+            class="text-primary text-sm mt-1"
           >
             Message must be at least 10 characters long
           </span>
