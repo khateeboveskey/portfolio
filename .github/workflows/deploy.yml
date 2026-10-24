@@ -3,6 +3,7 @@ name: Deploy to GitHub Pages
 
 on:
   workflow_dispatch:
+  pull_request:
   push:
     branches:
       - main
@@ -11,7 +12,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: pages
+  group: pages-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -34,11 +35,13 @@ jobs:
         run: npx nuxt build --preset github_pages
 
       - name: Upload Pages artifact
+        if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./.output/public
 
   deploy:
+    if: github.event_name != 'pull_request'
     needs: build
     permissions:
       pages: write
