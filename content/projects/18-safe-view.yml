@@ -1,0 +1,19 @@
+name: SafeView Website
+type: Website
+year: 2026
+stack:
+  - TypeScript
+  - Vue
+  - Nuxt
+  - TailwindCSS
+  - Laravel
+  - Filament
+description: >-
+  Arabic-first RTL marketing site for a Saudi smart-surveillance company
+  (AI video analytics, NVR/DVR integration, POS-to-footage linking),
+  server-rendered from a Laravel API with a Filament admin panel: API-driven
+  home sections, solutions and sectors pages, testimonials, FAQs, CMS pages
+  and a quote request form.
+url: https://safeview-sa.com/
+screenshot: safe-view.png
+featured: true

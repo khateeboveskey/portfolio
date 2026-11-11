@@ -12,7 +12,7 @@
         />
       </div>
       <div class="mt-8 flex justify-center">
-        <UiArrowLink to="/projects">Show all projects</UiArrowLink>
+        <UiShowAllLink to="/projects">Show all projects</UiShowAllLink>
       </div>
     </div>
   </section>

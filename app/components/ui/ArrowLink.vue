@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-// The site's text-link style: "Show all projects →" / "← Back to blog".
+// The site's text-link style: "← Back to blog".
 const props = defineProps<{
   to: string;
   /** Point the arrow back (for "Back to …" links). */

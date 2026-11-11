@@ -63,7 +63,7 @@ const snapInfoGroup = computed(() => [
   },
   {
     title: 'Students Trained',
-    content: 130,
+    content: 148,
   },
 ]);
 

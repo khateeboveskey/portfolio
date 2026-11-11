@@ -22,7 +22,7 @@
       </li>
     </ul>
     <div class="mt-8 flex justify-center">
-      <UiArrowLink to="/experience">Show all experience</UiArrowLink>
+      <UiShowAllLink to="/experience">Show all experience</UiShowAllLink>
     </div>
   </section>
 </template>
@@ -36,7 +36,8 @@ const { data: professionalExperience } = await useAsyncData(
     const all = await queryCollection('experience')
       .select(...EXPERIENCE_CARD_FIELDS)
       .all();
-    return sortExperienceByEndDate(featuredOrFallback(all));
+    // Latest four on the home page; the rest live on /experience.
+    return sortExperienceByEndDate(all).slice(0, 4);
   },
 );
 </script>

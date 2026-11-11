@@ -7,7 +7,7 @@
       </li>
     </ul>
     <div class="mt-8 flex justify-center">
-      <UiArrowLink to="/blog">Show all articles</UiArrowLink>
+      <UiShowAllLink to="/blog">Show all articles</UiShowAllLink>
     </div>
   </section>
 </template>

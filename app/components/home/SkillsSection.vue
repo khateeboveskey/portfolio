@@ -19,7 +19,7 @@
       </NuxtLink>
     </div>
     <div class="mt-8 flex justify-center">
-      <UiArrowLink to="/skills">Show all skills</UiArrowLink>
+      <UiShowAllLink to="/skills">Show all skills</UiShowAllLink>
     </div>
   </section>
 </template>
