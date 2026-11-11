@@ -8,17 +8,22 @@
       <h2 id="hard-skills" class="text-xl font-bold md:text-2xl">
         Hard Skills
       </h2>
+      <!-- Same items as the home Skills section. -->
       <ul
         v-if="data?.hard?.length"
-        class="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 md:mt-6 lg:grid-cols-4"
+        class="mt-4 flex flex-wrap items-center justify-center gap-4 md:mt-6 md:gap-8"
       >
         <li v-for="skill in data.hard" :key="skill.name">
           <NuxtLink
             :to="`/skills/${slugify(skill.name)}`"
-            class="group flex items-center gap-3 border-2 border-default p-3 transition-colors hover:bg-inverted hover:text-inverted"
+            :aria-label="skill.name"
+            :title="skill.name"
+            class="group"
           >
-            <UIcon :name="skill.icon" class="size-6 shrink-0" />
-            <span class="font-medium">{{ skill.name }}</span>
+            <UIcon
+              :name="skill.icon"
+              class="size-16 md:size-24 lg:size-30 grayscale group-hover:grayscale-0 group-focus-visible:grayscale-0 transition-all"
+            />
           </NuxtLink>
         </li>
       </ul>
@@ -32,7 +37,7 @@
         <li
           v-for="s in data.soft"
           :key="s"
-          class="border border-default px-3 py-1 text-sm"
+          class="border-2 border-default px-3 py-1 text-sm"
         >
           {{ s }}
         </li>

@@ -13,7 +13,6 @@
           :order="index + 1"
           :year="experienceEndLabel(item.endDate)"
           :category="item.category"
-          :period="formatExperiencePeriod(item.startDate, item.endDate)"
           :to="`/experience/${stemToSlug(item.stem)}`"
           :heading-level="2"
         />
